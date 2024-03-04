@@ -1,3 +1,10 @@
+main {
+    display: flex; /* Display the content side by side */
+    flex-wrap: wrap; /* Wrap the content */
+    justify-content: space-between; /* Space between the content */
+    align-items: center; /* Center the content */
+    padding: 0 0.5%; /* Adjust padding */
+}
 
 .Menu-text {
     display: none;
@@ -9,19 +16,22 @@ aside {
     z-index: 1; /* Stay on top */
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 0.05%;
+    border-bottom: 1.5px solid #000000;
 }
 
 article {
-    margin-left: 0; /* Remove margin */
-    padding: 0px 5%; /* Adjust padding */
+    margin-left: 10%; /* Remove margin */
+    padding: 5% 5%; /* Adjust padding */
 }
 
-hr {
-    border: 1px solid #000000;
-    margin: 5% 0; /* Adjust margin */
+.self-picture {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
 }
 
 
+/* The "target" attribute is used to show the Home section */
 .Home:target {
     display: block;
 }
@@ -34,15 +44,16 @@ hr {
 
 @media screen and (min-width: 768px) {
     aside {
-        width: 25%; /* Set the width of the sidebar */
+        width: 18%; /* Set the width of the sidebar */
         position: fixed; /* Fixed Sidebar (stay in place on scroll) */
         top: 0; /* Stay at the top */
         left: 0;
         height: 100%; /* Full-height: remove this if you want "auto" height */
+        border-right: 1.5px solid #000000;
     }
 
     article {
-        margin-left: 30%; /* 5% plus the width of the sidebar */
-        padding: 0px 10% 15% 0%;
+        margin-left: 45%; /* 5% plus the width of the sidebar */
+        padding: 40px 10% 15% 0%;
     }
 }
