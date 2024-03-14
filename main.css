@@ -50,6 +50,8 @@ main {
     justify-content: space-between; /* Space between the content */
     align-items: center; /* Center the content */
     padding: 0 0.5%; /* Adjust padding */
+    width: 100%; /* Full width */
+    height: 100vh; /* Full height */
 }
 
 .Menu-text {
@@ -103,7 +105,12 @@ article {
     }
 
     article {
-        padding: 40px 10% 15% 20%;
+        padding: 10% 15% 5% 20%;
+        height: 100%;
+    }
+
+    .footer-style {
+        padding: 0% 0% 0% 45%
     }
 }
 
