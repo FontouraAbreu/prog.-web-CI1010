@@ -113,6 +113,8 @@ aside {
 /* ARTICLE */
 /* -------------------------------------------------------------------------- */
 article {
+    display: flex; /* Display the content side by side */
+    flex-flow: column wrap; /* Wrap the content */
     flex: 0 1 auto; /* Adjust the width */
 }
 
@@ -132,21 +134,14 @@ article {
 
 ·/* SECTION */
 /* -------------------------------------------------------------------------- */
-
 /* The "target" attribute is used to show the Home section */
 .section {
     background-color: #fff; /* White background */
     color: #333; /* Dark grey text */
-}
-
-.section:target {
     display: flex;
     flex-flow: column wrap;
 }
 
-.section:not(:target) {
-    display: none;
-}
 
 /* -------------------------------------------------------------------------- */
 
