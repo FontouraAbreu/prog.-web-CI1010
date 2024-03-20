@@ -23,9 +23,7 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
-	line-height: 1;
-}
+
 ol, ul {
 	list-style: none;
 }
@@ -205,7 +203,6 @@ article {
     .article-text {
         padding: 5% 0% 0% 0%; /* Remove margin */
         align-self: center;
-
     }
     /* -------------------------------------------------------------------------- */
 
@@ -240,12 +237,22 @@ article {
         padding: 0% 0% 0% 45%;
         color: #fff; /* White text */
         background-color: #333; /* Dark grey background */
+        align-self: center;
+    }
+
+    /* INTERESTS */
+    /* -------------------------------------------------------------------------- */
+    .tools-list {
+        margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
+        display: flex; /* Display the content side by side */
+        flex-flow: row wrap; /* Wrap the content */
+        justify-content: space-between; /* Evenly space the li tags */
     }
 
     /* CONTACT */
     /* -------------------------------------------------------------------------- */
     .contact-list {
-        margin: 50px 20% 50px 20%; /* Add some margin to the top and bottom */
+        margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
         display: flex; /* Display the content side by side */
         flex-flow: row wrap; /* Wrap the content */
         justify-content: space-between; /* Evenly space the li tags */
