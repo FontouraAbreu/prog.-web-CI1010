@@ -165,13 +165,25 @@ article {
 /* PROJECT */
 /* -------------------------------------------------------------------------- */
 .project-list {
-    background-color: #f9f9f9; /* Light grey background */
 }
 
 .project-item {
     margin: 10px 0; /* Add some margin to the top and bottom */
     padding: 20px; /* Add some padding */
     border-radius: 5px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    color: #333; /* Dark grey text */
+    text-decoration: none; /* Remove the underline */
+}
+
+/* add a shadow to the project item */
+.project-item:hover {
+    box-shadow: 0 0 10px 0 #333; /* Add a shadow when hovered */
+}
+
+.project-title:hover {
+    color: #333; /* Dark grey text when hovered */
+    text-decoration: none; /* Add an underline when hovered */
 }
 
 
@@ -179,7 +191,7 @@ article {
 /* -------------------------------------------------------------------------- */
 /* The "target" attribute is used to show the Home section */
 .section {
-    background-color: #fff; /* White background */
+    background-color: #d0d0d0; /* White background */
     color: #333; /* Dark grey text */
     display: flex;
     flex-flow: column wrap;
@@ -253,14 +265,6 @@ article {
 
     /* PROJECTS LIST */
     /* -------------------------------------------------------------------------- */
-
-    
-    .project-item {
-        background-color: #fff; /* White background */
-        color: #333; /* Dark grey text */
-
-    }
-    
     .project-title {
         font-size: 1.5em; /* Increase the font size */
         margin-bottom: 10px; /* Add some margin to the bottom */
