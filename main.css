@@ -156,6 +156,15 @@ article {
         height: 100vh; /* Full height */
     }
 
+    /* BANNERS */
+    /* -------------------------------------------------------------------------- */
+    .interests-banner {
+        background-color: #616161; /* Dark grey background */
+        color: #fff; /* White text */
+        height: 12rem;
+        width: 100%;
+    }
+
     /* ASIDE */
     /* -------------------------------------------------------------------------- */
     /* change aside links colors and style */
@@ -190,13 +199,13 @@ article {
     }
 
     .article-title {
-        padding: 5% 0% 0% 0%; /* Remove margin */
+        padding: 5% 5% 0% 5%; /* top,right,bottom,left */
         align-self: center;
         font-family: Arial, Helvetica, sans-serif;
     }
 
     .article-text {
-        padding: 5% 0% 0% 0%; /* Remove margin */
+        padding: 5% 5% 0% 5%; /* top,right,bottom,left */
         align-self: center;
     }
     /* -------------------------------------------------------------------------- */
@@ -204,7 +213,6 @@ article {
     /* PROJECTS LIST */
     /* -------------------------------------------------------------------------- */
     .project-list {
-        list-style-type: none; /* Remove the default list style */
         padding: 0; /* Remove the default padding */
         margin: 0; /* Remove the default margin */
         background-color: #f9f9f9; /* Light grey background */
