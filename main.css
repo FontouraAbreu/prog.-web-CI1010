@@ -77,8 +77,6 @@ aside {
     position: relative; /* Remove fixed position */
     z-index: 1; /* Stay on top */
     overflow-x: hidden; /* Disable horizontal scroll */
-    margin-top: 0.05%;
-    border-bottom: 1.5px solid #000000;
     background-color: #333; /* Dark grey background */
     color: #fff; /* White text */
 }
@@ -93,13 +91,8 @@ aside {
 /* -------------------------------------------------------------------------- */
 #contact {
     background-color: #f5f5f5; /* Light grey background */
-    padding: 20px; /* Add some padding */
 }
 
-#contact .article-title {
-    font-size: 2em; /* Increase the font size */
-    color: #333; /* Dark grey text */
-}
 
 #contact h3 {
     font-size: 1.5em; /* Increase the font size */
@@ -126,6 +119,7 @@ article {
 }
 
 .article-title {
+    font-size: 2em; /* Increase the font size */
     color: #333; /* Dark grey text */
 }
 
@@ -173,7 +167,7 @@ article {
     /* -------------------------------------------------------------------------- */
     /* change aside links colors and style */
     aside {
-        width: 18%; /* Set the width of the sidebar */
+        width: 10%; /* Set the width of the sidebar */
         top: 0; /* Stay at the top */
         left: 0;
         height: 100%; /* Full-height: remove this if you want "auto" height */
@@ -247,6 +241,16 @@ article {
         color: #fff; /* White text */
         background-color: #333; /* Dark grey background */
     }
+
+    /* CONTACT */
+    /* -------------------------------------------------------------------------- */
+    .contact-list {
+        margin: 50px 20% 50px 20%; /* Add some margin to the top and bottom */
+        display: flex; /* Display the content side by side */
+        flex-flow: row wrap; /* Wrap the content */
+        justify-content: space-between; /* Evenly space the li tags */
+    }
+
 
 }
 
