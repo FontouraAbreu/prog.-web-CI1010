@@ -69,10 +69,9 @@ main {
 /* -------------------------------------------------------------------------- */
 aside {
     width: 100%; /* Set the width of the sidebar */
-    height: 20vh;
+    height: 13vh;
     position: relative; /* Remove fixed position */
     z-index: 1; /* Stay on top */
-    overflow-x: hidden; /* Disable horizontal scroll */
     background-color: #333; /* Dark grey background */
     color: #fff; /* White text */
 }
@@ -89,8 +88,18 @@ aside {
     color: #fff;
     margin: 10px;
 }
-
 /* -------------------------------------------------------------------------- */
+
+/* INDEX */
+/* -------------------------------------------------------------------------- */
+.side-panel-highlight-text {
+    background-color: #333; /* Dark grey background */
+    color: #fff; /* White text */
+    padding: 2px; /* Add some padding */
+    margin: 2px 0; /* Add some margin to the top and bottom */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove the underline */
+}
 
 /* CONTACT */
 /* -------------------------------------------------------------------------- */
@@ -133,19 +142,21 @@ aside {
 /* -------------------------------------------------------------------------- */
 article {
     display: flex; /* Display the content side by side */
-    flex-flow: column wrap; /* Wrap the content */
-    flex: 0 1 auto; /* Adjust the width */
+    flex-flow: column nowrap; /* Wrap the content */
 }
 
 .article-title {
     font-size: 2em; /* Increase the font size */
     color: #333; /* Dark grey text */
-}
-
-.article-title {
-    padding: 5% 5% 0% 5%; /* top,right,bottom,left */
+    padding: 5% 5% 5% 5%; /* top,right,bottom,left */
     align-self: center;
     font-family: Arial, Helvetica, sans-serif;
+}
+
+.article-subtitle {
+    font-size: 1.5em; /* Increase the font size */
+    padding-left: 1.5%;
+    color: #333; /* Dark grey text */
 }
 
 .article-text {
@@ -164,9 +175,6 @@ article {
 
 /* PROJECT */
 /* -------------------------------------------------------------------------- */
-.project-list {
-}
-
 .project-item {
     margin: 10px 0; /* Add some margin to the top and bottom */
     padding: 20px; /* Add some padding */
@@ -181,9 +189,26 @@ article {
     box-shadow: 0 0 10px 0 #333; /* Add a shadow when hovered */
 }
 
-.project-title:hover {
+.project-title {
+    font-size: 1.5em; /* Increase the font size */
+    margin-bottom: 10px; /* Add some margin to the bottom */
+    display: inline-block;
+
+}
+
+.project-title-link {
     color: #333; /* Dark grey text when hovered */
-    text-decoration: none; /* Add an underline when hovered */
+    text-decoration: none; /* Remove the underline */
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+.project-title-link:hover {
+    color: #333; /* Dark grey text when hovered */
+    text-decoration: underline; /* Add an underline when hovered */
+}
+
+.project-description {
+    line-height: 1.6; /* Increase the line height for readability */
 }
 
 
@@ -195,6 +220,15 @@ article {
     color: #333; /* Dark grey text */
     display: flex;
     flex-flow: column wrap;
+}
+
+/* BANNERS */
+/* -------------------------------------------------------------------------- */
+.interests-banner {
+    background-color: #616161; /* Dark grey background */
+    color: #fff; /* White text */
+    height: 20vh;
+    width: 100%;
 }
 
 
@@ -220,20 +254,11 @@ article {
         height: 100vh; /* Full height */
     }
 
-    /* BANNERS */
-    /* -------------------------------------------------------------------------- */
-    .interests-banner {
-        background-color: #616161; /* Dark grey background */
-        color: #fff; /* White text */
-        height: 12rem;
-        width: 100%;
-    }
-
     /* ASIDE */
     /* -------------------------------------------------------------------------- */
     /* change aside links colors and style */
     aside {
-        width: 12%; /* Set the width of the sidebar */
+        width: 12vw; /* Set the width of the sidebar */
         height: 100%; /* Full-height: remove this if you want "auto" height */
         border-right: 1.5px solid #000000;
     }
@@ -265,14 +290,7 @@ article {
 
     /* PROJECTS LIST */
     /* -------------------------------------------------------------------------- */
-    .project-title {
-        font-size: 1.5em; /* Increase the font size */
-        margin-bottom: 10px; /* Add some margin to the bottom */
-    }
-    
-    .project-description {
-        line-height: 1.6; /* Increase the line height for readability */
-    }
+
     /* -------------------------------------------------------------------------- */
 
     .footer-style {
