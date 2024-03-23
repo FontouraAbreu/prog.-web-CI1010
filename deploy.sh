@@ -3,13 +3,13 @@
 # Usage: ./deploy.sh <branch> <path_to_repository>
 # Example: ./deploy.sh master /var/www/html/my-repo
 
-LOG_FILE=/nobackup/bcc/${USER}/deploy.log
+LOG_FILE=/nobackup/${groups}/${USER}/deploy.log
 
-WEBSITE_DIR="/home/bcc/vfa20/desktop/prog.-web-CI1010/"
-DINF_WEBSITE_DIR="/home/html/inf/vfa20/"
+WEBSITE_DIR="/home/${groups}/${USER}/desktop/prog.-web-CI1010/"
+DINF_WEBSITE_DIR="/home/html/inf/${USER}/"
 
 # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
-DINF_WEBSITE_DIR_SYMBOLIC="/home/bcc/vfa20/public_html" # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
+DINF_WEBSITE_DIR_SYMBOLIC="/home/${groups}/${USER}/public_html" # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
 # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
 
 
