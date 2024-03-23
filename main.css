@@ -83,10 +83,24 @@ aside {
     margin: 10% 10%; /* Adjust padding */
 }
 
+.aside-list-items {
+    margin: 1% 0; /* Add some margin to the top and bottom */
+}
+
 .aside-text {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     color: #fff;
     margin: 10px;
+}
+
+.selected-page {
+    background-color: #616161; /* Dark grey background */
+    color: #fff; /* White text */
+    padding: 2px; /* Add some padding */
+    margin: 2px 0; /* Add some margin to the top and bottom */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove the underline */
+
 }
 /* -------------------------------------------------------------------------- */
 
@@ -148,19 +162,19 @@ article {
 .article-title {
     font-size: 2em; /* Increase the font size */
     color: #333; /* Dark grey text */
-    padding: 5% 5% 5% 5%; /* top,right,bottom,left */
+    padding: 2% 5% 5% 5%; /* top,right,bottom,left */
     align-self: center;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 .article-subtitle {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: 1.5em; /* Increase the font size */
-    padding-left: 1.5%;
+    padding: 2% 2%;
     color: #333; /* Dark grey text */
 }
 
 .article-text {
-    padding: 5% 5% 0% 5%; /* top,right,bottom,left */
     align-self: center;
 }
 
@@ -179,9 +193,15 @@ article {
     margin: 10px 0; /* Add some margin to the top and bottom */
     padding: 20px; /* Add some padding */
     border-radius: 5px; /* Rounded corners */
-    background-color: #fff; /* White background */
+    background-color: #c8c8c8; /* White background */
     color: #333; /* Dark grey text */
     text-decoration: none; /* Remove the underline */
+}
+
+.divider-line {
+    border-bottom: 1px solid #333; /* Add a border line */
+    margin: 10px 0; /* Add some margin to the top and bottom */
+
 }
 
 /* add a shadow to the project item */
@@ -192,8 +212,7 @@ article {
 .project-title {
     font-size: 1.5em; /* Increase the font size */
     margin-bottom: 10px; /* Add some margin to the bottom */
-    display: inline-block;
-
+    display: inline-block; /* Display the content inline */
 }
 
 .project-title-link {
@@ -237,12 +256,13 @@ article {
 /* FOOTER */
 /* -------------------------------------------------------------------------- */
 .footer-style {
-    display: flex;
-    justify-content: center;
+    background-color: #333; /* Dark grey background */
+    width: 100vw;
 }
 
 .footer-style p {
-    color: #000000; /* White text */
+    color: #ffffff; /* White text */
+    align-self: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -258,7 +278,7 @@ article {
     /* -------------------------------------------------------------------------- */
     /* change aside links colors and style */
     aside {
-        width: 12vw; /* Set the width of the sidebar */
+        width: 10vw; /* Set the width of the sidebar */
         height: 100%; /* Full-height: remove this if you want "auto" height */
         border-right: 1.5px solid #000000;
     }
@@ -292,13 +312,6 @@ article {
     /* -------------------------------------------------------------------------- */
 
     /* -------------------------------------------------------------------------- */
-
-    .footer-style {
-        padding: 0% 0% 0% 45%;
-        color: #fff; /* White text */
-        background-color: #333; /* Dark grey background */
-        align-self: center;
-    }
 
     /* INTERESTS */
     /* -------------------------------------------------------------------------- */
