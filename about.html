@@ -1,28 +1,45 @@
 <!DOCTYPE html>
 <html>
-<head>
-        <meta charset='utf-8'>
-        <title>Fontoura</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
-</head>
-<body>
-    <main>
-        <aside class="aside">
-            <ul class="aside-list">
-                <li><a href="index.html" class="aside-text">Home</a></li>
-                <li><a href="about.html" class="aside-text">About</a></li>
-                <li><a href="projects.html" class="aside-text">Projects</a></li>
-                <li><a href="interests.html" class="aside-text">Interests</a></li>
-                <li><a href="contact.html" class="aside-text">Contact</a></li>
-            </ul>
-        </aside>
-        <article id="about" class="section">
-            <img src="./midia/banners/home.jpg" alt="home picture" class="home-picture">
-            <img src="./midia/self.jpeg" alt="A picture of myself" class="self-picture"> 
-            <h1 class="article-title">Welcome to my personal page</h1>
-            <p class="article-text">I am a Computer Science student at UFPR(Federal University of Paraná) emphasizing in computer network and security.<br>I'm currenctly working at RNP(National Research Network) where I act as a DevSecOps Analyst</p>
-        </article>
-    </main>
-</body>
+    <head>
+            <meta charset='utf-8'>
+            <title>Fontoura</title>
+            <meta name='viewport' content='width=device-width, initial-scale=1'>
+            <link rel='stylesheet' type='text/css' media='screen' href='./main.css'>
+    </head>
+    <body>
+        <main>
+            <aside class="aside">
+                <ul class="aside-list">
+                    <li class="aside-list-items"><a href="index.html" class="aside-text">Home</a></li>
+                    <li class="aside-list-items"><a href="about.html" class="aside-text selected-page">About</a></li>
+                    <li class="aside-list-items"><a href="projects.html" class="aside-text">Projects</a></li>
+                    <li class="aside-list-items"><a href="interests.html" class="aside-text">Interests</a></li>
+                    <li class="aside-list-items"><a href="contact.html" class="aside-text">Contact</a></li>
+                </ul>
+            </aside>
+            <article id="about" class="section">
+                <img src="./midia/banners/home.jpg" alt="home picture" class="home-picture">
+                <!-- <img src="./midia/self.jpeg" alt="A picture of myself" class="self-picture">  -->
+                <h1 class="article-title">Here you will find some information about me</h1>
+                <p class="article-text">
+                    I am a Computer Science student at UFPR(Federal University of Paraná) emphasizing in computer network and security.<br>
+                    I'm currently working at RNP(National Research Network) where I act as a DevSecOps Analyst.
+                </p>
+
+                <h2 class="article-subtitle">My professional day-to-day</h2>
+                <p class="article-text">
+                    At RNP, I work with the development of automating internal and network monitoring tasks, 
+                    as well as the main actor in the security tasks, such as implementing and maintaining security policies and tools,
+                    contacting the network users to inform them about security incidents and how to solve them.<br>
+                    I actively install and maintain infraestructure tools such as GitLab, Nfsen-ng, Wazuh, among others.
+                </p>
+
+                <h2 class="article-subtitle">My academic day-to-day</h2>
+                <p class="article-text">
+                    At UFPR, I'm currently on my 5th semester, where I'm studying subjects such as: 
+                    Operating Systems, Computer Networks, Software Design and Web Development.<br>
+                </p>
+            </article>
+        </main>
+    </body>
 </html>
