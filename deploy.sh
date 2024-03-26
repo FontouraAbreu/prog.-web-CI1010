@@ -19,7 +19,7 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 if [ ! -d "${LOG_FILE}" ]; then
-    mkdir /nobackup/${USER_GROUP}/${USER}/
+    touch ${LOG_FILE}
 fi
 
 echo "[${date}] Starting script" >> $LOG_FILE
