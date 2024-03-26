@@ -5,7 +5,7 @@
 
 LOG_FILE=/nobackup/${groups}/${USER}/deploy.log
 
-WEBSITE_DIR="/home/${groups}/${USER}/desktop/prog.-web-CI1010/"
+WEBSITE_DIR=/home/${groups}/${USER}/desktop/prog.-web-CI1010/
 DINF_WEBSITE_DIR="/home/html/inf/${USER}/"
 
 # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
@@ -39,20 +39,22 @@ fi
 if [ -n "$(git -C $path status --porcelain)" ]; then
     echo "[${date}] The repository has changes" >> $LOG_FILE
     # pull the changes
+    echo "[${date}] Pulling the changes" >> $LOG_FILE
     git -C $path pull origin $branch >> $LOG_FILE
     # deploy the changes
     echo "[${date}] Deploying the changes" >> $LOG_FILE
-    # add your deployment commands here
 
+    # remove the symbolic link if it exists
     if [ -d $DINF_WEBSITE_DIR_SYMBOLIC ]; then
         echo "[${date}] Removing symbolic link" >> $LOG_FILE
         rm -rf $DINF_WEBSITE_DIR_SYMBOLIC
     fi
 
+    # create the symbolic link
     echo "[${date}] Creating symbolic link" >> $LOG_FILE
-
     ln -vs $DINF_WEBSITE_DIR $DINF_WEBSITE_DIR_SYMBOLIC
 
+    # copy the files
     echo "[${date}] Copying files" >> $LOG_FILE
     rsync -avz --delete --exclude='*.git' $WEBSITE_DIR $DINF_WEBSITE_DIR_SYMBOLIC
 
