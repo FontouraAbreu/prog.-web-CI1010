@@ -80,7 +80,7 @@ aside {
     display: flex; /* Display the content side by side */
     flex-flow: row wrap; /* Wrap the content */
     justify-content: space-evenly; /* Evenly space the li tags */
-    margin: 10% 10%; /* Adjust padding */
+    margin: 8% 10%; /* Adjust padding */
 }
 
 .aside-list-items {
@@ -174,6 +174,10 @@ article {
     border-bottom: 1.5px solid #b7b7b7; /* Add a line under the subtitle */
 }
 
+.article-text {
+    align-self: center;
+    max-width: 90%;
+}
 
 /* -------------------------------------------------------------------------- */
 .self-picture {
@@ -226,6 +230,46 @@ article {
     line-height: 1.6; /* Increase the line height for readability */
 }
 
+/* INTERESTS */
+/* -------------------------------------------------------------------------- */
+.tools-list {
+    margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
+    display: flex; /* Display the content side by side */
+    flex-flow: row wrap; /* Wrap the content */
+}
+
+.tools-list-item {
+    display: flex; /* Display the content side by side */
+    color: #333; /* Change the text color to dark grey */
+    font-family: Arial, sans-serif; /* Change the font style */
+    margin: 5px 0; /* Add some margin to the top and bottom */
+    flex: 0 0 50%; /* Each item will take up 50% of the line */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    justify-content: flex-start; /* Align the text to the center */
+}
+
+.tools-list-link {
+    text-decoration: underline; /* Add an underline */
+    color: #333; /* Dark grey text */
+}
+
+.tools-list-link:hover {
+    background-color: #333; /* Change the background color to light grey when hovered */
+    border-radius: 5px; /* Rounded corners */
+    color: #fff; /* Change the text color to white when hovered */
+    padding: 1.5px; /* Add some padding */
+}
+
+.contact-page-ref {
+    color: #333; /* Dark grey text */
+    text-decoration: none; /* Remove the underline */
+}
+
+.contact-page-ref:hover {
+    background-color: #333; /* Change the background color to light grey when hovered */
+    border-radius: 5px; /* Rounded corners */
+    color: #fff; /* Change the text color to white when hovered */
+}
 
 ·/* SECTION */
 /* -------------------------------------------------------------------------- */
@@ -283,7 +327,7 @@ article {
         display: flex; /* Display the content side by side */
         flex-flow: column wrap; /* Wrap the content */
         justify-content: space-evenly; /* Evenly space the li tags */
-        margin: 10% 10%; /* Adjust padding */
+        margin: 24% 10%; /* Adjust padding */
     }
     
     /* -------------------------------------------------------------------------- */
@@ -302,7 +346,6 @@ article {
     }
     
     .article-text {
-        align-self: center;
         max-width: 60%;
     }
     
@@ -319,7 +362,12 @@ article {
         margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
         display: flex; /* Display the content side by side */
         flex-flow: row wrap; /* Wrap the content */
-        justify-content: space-between; /* Evenly space the li tags */
+    }
+
+    .tools-list-link {
+        display: flex; /* Display the content side by side */
+        text-decoration: none; /* Remove the underline */
+        color: #333; /* Dark grey text */    
     }
     
     /* CONTACT */
