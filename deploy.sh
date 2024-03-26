@@ -2,14 +2,14 @@
 # a script that checks if a repository has any changes in a specific branch and if so, pulls and deploys the changes
 # Usage: ./deploy.sh <branch> <path_to_repository>
 # Example: ./deploy.sh master /var/www/html/my-repo
+USER_GROUP=$(id -gn)
+LOG_FILE="/nobackup/${USER_GROUP}/${USER}/deploy.log"
 
-LOG_FILE=/nobackup/${groups}/${USER}/deploy.log
-
-WEBSITE_DIR=/home/${groups}/${USER}/desktop/prog.-web-CI1010/
+WEBSITE_DIR="/home/${USER_GROUP}/${USER}/desktop/prog.-web-CI1010/"
 DINF_WEBSITE_DIR="/home/html/inf/${USER}/"
 
 # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
-DINF_WEBSITE_DIR_SYMBOLIC="/home/${groups}/${USER}/public_html" # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
+DINF_WEBSITE_DIR_SYMBOLIC="/home/${USER_GROUP}/${USER}/public_html" # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
 # BE CAREFUL WITH THE SYMBOLIC LINK AS IT WILL BE REMOVED AND CREATED AGAIN
 
 
@@ -18,6 +18,10 @@ if [ "$#" -ne 2 ]; then
     echo "Usage: ./deploy.sh <branch> <path_to_repository>"
     exit 1
 fi
+if [ ! -d "${LOG_FILE}" ]; then
+    mkdir /nobackup/${USER_GROUP}/${USER}/
+fi
+
 echo "[${date}] Starting script" >> $LOG_FILE
 # get the branch and the path to the repository
 branch=$1
