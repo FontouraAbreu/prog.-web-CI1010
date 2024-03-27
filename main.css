@@ -69,7 +69,8 @@ main {
 /* -------------------------------------------------------------------------- */
 aside {
     width: 100%; /* Set the width of the sidebar */
-    height: 13vh;
+    min-width: 102px; /* Set the minimum width of the sidebar */
+    height: 13vh; /* Full-height: remove this if you want "auto" height */
     position: relative; /* Remove fixed position */
     z-index: 1; /* Stay on top */
     background-color: #333; /* Dark grey background */
@@ -80,7 +81,7 @@ aside {
     display: flex; /* Display the content side by side */
     flex-flow: row wrap; /* Wrap the content */
     justify-content: space-evenly; /* Evenly space the li tags */
-    margin: 8% 10%; /* Adjust padding */
+    margin: 3% 10% 5% 10%; /* Adjust padding */
 }
 
 .aside-list-items {
@@ -138,10 +139,11 @@ aside {
 }
 
 .contact-list {
-    margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
+    margin: 50px auto; /* Add some margin to the top and bottom and auto for horizontal centering */
     display: flex; /* Display the content side by side */
     flex-flow: column wrap; /* Wrap the content */
-    justify-content: space-between; /* Evenly space the li tags */
+    justify-content: flex-start; /* Align items at the top */
+    align-items: flex-start; /* Align items at the left */
 }
 
 .contact-list-item {
@@ -163,18 +165,23 @@ article {
     padding: 2% 5% 5% 5%; /* top,right,bottom,left */
     align-self: center;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 0px 10px 0px 10px;
 }
 
 .article-subtitle {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: 1.5em; /* Increase the font size */
     margin: 2% 2%;
-    padding-bottom: 1%;
+    padding-bottom: 0.5%;
     color: #333; /* Dark grey text */
     border-bottom: 1.5px solid #b7b7b7; /* Add a line under the subtitle */
+    border-radius: 5px; /* Rounded corners */
 }
 
 .article-text {
+    font-size: 1.2rem; /* Increase the font size */
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 7px;
     align-self: center;
     max-width: 90%;
 }
@@ -193,22 +200,34 @@ article {
 .project-item {
     margin: 10px 0; /* Add some margin to the top and bottom */
     padding: 20px; /* Add some padding */
-    border-radius: 5px; /* Rounded corners */
+    margin: 0px 10px;
+    border-radius: 20px; /* Rounded corners */
     background-color: #c8c8c8; /* White background */
     color: #333; /* Dark grey text */
     text-decoration: none; /* Remove the underline */
 }
-
-.divider-line {
-    border-bottom: 1px solid #333; /* Add a border line */
-    margin: 10px 0; /* Add some margin to the top and bottom */
-    
-}
-
 /* add a shadow to the project item */
 .project-item:hover {
     box-shadow: 0 0 10px 0 #333; /* Add a shadow when hovered */
 }
+
+.github-stats-section {
+    display: flex; /* Display the content side by side */
+    flex-flow: column wrap; /* Wrap the content */
+    align-items: center; /* Center the content vertically */
+    justify-content: space-evenly; /* Evenly space the content */
+}
+
+.github-stats-item {
+    display: flex; /* Display the content side by side */
+    margin-top: 10px; /* Add some margin to the top */
+}
+
+.divider-line {
+    border-bottom: 0.5px solid #333; /* Add a border line */
+    margin: 10px 15px; /* Add some margin to the top and bottom */
+}
+
 
 .project-title {
     font-size: 1.5em; /* Increase the font size */
@@ -233,9 +252,10 @@ article {
 /* INTERESTS */
 /* -------------------------------------------------------------------------- */
 .tools-list {
-    margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
+    margin: 50px auto; /* Add margin to the top and bottom and set left and right margins to auto */
     display: flex; /* Display the content side by side */
     flex-flow: row wrap; /* Wrap the content */
+    justify-content: center; /* Center the content horizontally */
 }
 
 .tools-list-item {
@@ -245,7 +265,7 @@ article {
     margin: 5px 0; /* Add some margin to the top and bottom */
     flex: 0 0 50%; /* Each item will take up 50% of the line */
     box-sizing: border-box; /* Include padding and border in element's total width and height */
-    justify-content: flex-start; /* Align the text to the center */
+    justify-content: flex-start; /* Align the text to the left */
 }
 
 .tools-list-link {
@@ -354,16 +374,13 @@ article {
     /* PROJECTS LIST */
     /* -------------------------------------------------------------------------- */
     
+    .github-stats-section {
+        flex-flow: row wrap; /* Wrap the content */
+    }
     /* -------------------------------------------------------------------------- */
 
     /* INTERESTS */
     /* -------------------------------------------------------------------------- */
-    .tools-list {
-        margin: 50px 10% 50px 10%; /* Add some margin to the top and bottom */
-        display: flex; /* Display the content side by side */
-        flex-flow: row wrap; /* Wrap the content */
-    }
-
     .tools-list-link {
         display: flex; /* Display the content side by side */
         text-decoration: none; /* Remove the underline */
