@@ -278,13 +278,14 @@ article {
 .tools-list-link {
     text-decoration: underline; /* Add an underline */
     color: #333; /* Dark grey text */
+    padding: 3.5px; /* Add some padding */
+    margin-left: 25%;
 }
 
 .tools-list-link:hover {
     background-color: #333; /* Change the background color to light grey when hovered */
     border-radius: 5px; /* Rounded corners */
     color: #fff; /* Change the text color to white when hovered */
-    padding: 1.5px; /* Add some padding */
 }
 
 .contact-page-ref {
