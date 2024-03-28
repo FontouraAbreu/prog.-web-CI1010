@@ -52,7 +52,7 @@ main {
     flex-direction: column;
     justify-content: flex-start; /* Space between the content */
     width: 100%; /* Full width */
-    height: 100vh; /* Full height */
+    height: 100%; /* Full height */
 }
 
 .Menu-text {
@@ -232,8 +232,8 @@ article {
 }
 
 .divider-line {
-    border-bottom: 0.5px solid #333; /* Add a border line */
     margin: 10px 15px; /* Add some margin to the top and bottom */
+    color: #fff;
 }
 
 
