@@ -71,7 +71,6 @@ main {
 aside {
     width: 100%; /* Set the width of the sidebar */
     min-width: 102px; /* Set the minimum width of the sidebar */
-    height: 13vh; /* Full-height: remove this if you want "auto" height */
     position: relative; /* Remove fixed position */
     z-index: 1; /* Stay on top */
     background-color: #333; /* Dark grey background */
@@ -161,6 +160,7 @@ article {
 }
 
 .article-title {
+    display: flex;
     font-size: 2em; /* Increase the font size */
     font-weight: bold; /* Bold text */
     color: #333; /* Dark grey text */
@@ -213,6 +213,7 @@ article {
     color: #333; /* Dark grey text */
     text-decoration: none; /* Remove the underline */
 }
+
 /* add a shadow to the project item */
 .project-item:hover {
     box-shadow: 0 0 10px 0 #333; /* Add a shadow when hovered */
