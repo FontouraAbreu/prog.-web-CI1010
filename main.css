@@ -174,10 +174,11 @@ article {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     font-size: 1.5em; /* Increase the font size */
     margin: 2% 2%;
-    padding-bottom: 0.5%;
-    color: #333; /* Dark grey text */
+    padding: 0 0 10px 5.5px;
+    color: #000; /* Dark grey text */
     border-bottom: 1.5px solid #b7b7b7; /* Add a line under the subtitle */
-    border-radius: 5px; /* Rounded corners */
+    display: flex;
+    justify-content: center;
 }
 
 .article-text {
@@ -236,7 +237,6 @@ article {
     color: #fff;
 }
 
-
 .project-title {
     font-size: 1.5em; /* Increase the font size */
     margin-bottom: 10px; /* Add some margin to the bottom */
@@ -289,15 +289,13 @@ article {
     color: #fff; /* Change the text color to white when hovered */
 }
 
-.contact-page-ref {
-    color: #333; /* Dark grey text */
-    text-decoration: none; /* Remove the underline */
-}
 
-.contact-page-ref:hover {
+.contact-page-ref {
+    text-decoration: none; /* Remove the underline */
     background-color: #333; /* Change the background color to light grey when hovered */
     border-radius: 5px; /* Rounded corners */
     color: #fff; /* Change the text color to white when hovered */
+    padding: 0 5px; /* Add some padding */
 }
 
 ·/* SECTION */
