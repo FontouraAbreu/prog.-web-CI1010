@@ -4,7 +4,7 @@ services:
   ruby_on_rails:
     build:
       context: .
-    image: ruby_on_rails    
+    image: ruby_on_rails:3.7.5    
 
     volumes:
       - .:/app
