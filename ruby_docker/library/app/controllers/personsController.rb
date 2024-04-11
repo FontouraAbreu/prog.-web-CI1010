@@ -1,30 +1,44 @@
 class PersonsController < ApplicationController
     def inserir
-      person = Person.create(pessoa_params)
+      person = Person.new(person_params)
       render json: person
+      if person.save
+        render json: person, include: :phone
+      else
+        render json: { errors: person.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   
     def alterar
-      person = Pessoa.find(params[:id])
-      person.update(pessoa_params)
-      render json: person
+      person = Person.find(params[:id])
+      if person.update(person_params)
+        render json: person, include: :phone
+      else
+        render json: { errors: person.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   
     def excluir
-      person = Pessoa.find(params[:id])
+      person = Person.find(params[:id])
       person.destroy
       head :no_content
     end
   
     def listar
-      pessoas = Pessoa.all
-      render json: pessoas
+      person = Person.all
+      render json: person, include: :phone
+    end
+
+    def borrowings
+      person = Person.find(params[:id])
+      borrowings = person.borrowings
+      render json: borrowings, include: [:book]
     end
   
     private
   
-    def pessoa_params
-      params.permit(:last_name, :first_name, :address, :city)
+    def person_params
+      params.permit(:last_name, :first_name, :address, :city, phone_attributes: [:id, :number])
     end
   end
   
