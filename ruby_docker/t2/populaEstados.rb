@@ -8,5 +8,6 @@ require 'csv'
         estado = Estado.new()
         estado.nome = row['NOME']
         estado.sigla = row['SIGLA']
+        estado.codigo_uf = row['CODIGO_UF']
         estado.save
 end
