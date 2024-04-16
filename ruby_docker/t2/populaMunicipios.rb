@@ -10,7 +10,7 @@ municipios_csv.each do |row|
     municipio = Municipio.new()
     municipio.nome = row['NOME']
     # encontra o estado pelo codigo
-    estado = estados.find_by(codigo_uf: row['COD_UF'])
+    estado = estados.find_by(codigo_uf: row['CODIGO_UF'])
     municipio.estado = estado
     municipio.save
 end
