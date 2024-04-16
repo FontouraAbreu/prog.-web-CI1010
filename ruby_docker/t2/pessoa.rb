@@ -43,12 +43,15 @@ case command
         Pessoa.criar_pessoa({nome: param})
     when 'lista' # ruby pessoas.rb lista
         Pessoa.listar_pessoas.each do |pessoa|
-            puts pessoa.nome
+            puts "ID: #{pessoa.id}, Nome: #{pessoa.nome}"
         end
     when 'atualiza' # ruby pessoas.rb atualiza 1 "José"
         Pessoa.atualizar_pessoa(param.to_i, {nome: ARGV[2]})
     when 'deleta' # ruby pessoas.rb deleta 1
         Pessoa.deletar_pessoa(param.to_i)
+    # quando for vazio, não faz nada
+    when nil
+
     else
         puts "Comando desconhecido: #{command}"
 end

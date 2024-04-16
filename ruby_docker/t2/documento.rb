@@ -49,6 +49,9 @@ case command
         Documento.atualizar_documento(param.to_i, {numero: ARGV[2]})
     when 'deleta' # ruby documentos.rb deleta 1
         Documento.deletar_documento(param.to_i)
+    # quando for vazio, não faz nada
+    when nil
+        
     else
         puts "Comando desconhecido: #{command}"
 end

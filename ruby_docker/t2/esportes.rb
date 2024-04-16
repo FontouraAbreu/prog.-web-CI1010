@@ -45,6 +45,9 @@ case command
         Esporte.atualizar_esporte(param.to_i, {nome: ARGV[2]})
     when 'deleta'
         Esporte.deletar_esporte(param.to_i)
+    # quando for vazio, não faz nada
+    when nil
+
     else
         puts "Comando desconhecido: #{command}"
 end

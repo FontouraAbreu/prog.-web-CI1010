@@ -43,6 +43,9 @@ case command
         Municipio.atualizar_municipio(param.to_i, {nome: ARGV[2]})
     when 'deleta' # ruby municipios.rb deleta 1
         Municipio.deletar_municipio(param.to_i)
+    # quando for vazio, não faz nada
+    when nil
+
     else
         puts "Comando desconhecido: #{command}"
 end

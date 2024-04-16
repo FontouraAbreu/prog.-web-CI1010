@@ -59,6 +59,9 @@ case command
         Estado.atualizar_estado(param.to_i, {nome: ARGV[2]})
     when 'deleta' # ruby estados.rb deleta 1
         Estado.deletar_estado(param.to_i)
+    # quando for vazio, não faz nada
+    when nil
+
     else
         puts "Comando desconhecido: #{command}"
 end
