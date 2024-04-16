@@ -1,11 +1,11 @@
 $:.push './'
 require 'pessoa.rb'
-require 'esporte.rb'
+require 'esportes.rb'
 require 'csv'
 
 # Esportes
-esportes = Esportes.all
-pessoas = Pessoas.all
+esportes = Esporte.all
+pessoas = Pessoa.all
 
 pessoas.each do |pessoa|
     numero_aleatorio_de_esportes = rand(6)
