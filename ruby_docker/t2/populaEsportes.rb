@@ -1,5 +1,6 @@
 $:.push './'
 require 'pessoa.rb'
+require 'esportes.rb'
 require 'csv'
 
 
