@@ -1,6 +1,6 @@
 $:.push './'
 require 'active_record'
-require 'estado.rb'
+require_relative 'estado.rb'
 
 ActiveRecord::Base.establish_connection :adapter => "sqlite3", :database => "Tabelas.sqlite3"
 
@@ -40,16 +40,31 @@ end
 if __FILE__ == $0
     case command
         when 'cria' # ruby municipios.rb cria 1 "São Paulo"
-            Municipio.criar_municipio({estado_id: param.to_i, nome: ARGV[2]})
+            nome = params['nome'] || 'n/a'
+            estado_id = params['estado'] || nil
+            estado = Estado.find_by(id: estado_id)
+
+            Municipio.criar_municipio({nome: nome, estado: estado})
         when 'lista' # ruby municipios.rb lista
             Municipio.listar_municipios.each do |municipio|
                 estado = Estado.find_by(id: municipio.estado_id)
-                puts "ID: #{municipio.id}, UF: #{estado.sigla}, Nome: #{municipio.nome}"
+                puts "ID: #{municipio&.id}, UF: #{estado&.sigla}, Nome: #{municipio&.nome}"
             end
         when 'atualiza' # ruby municipios.rb atualiza 1 "Rio de Janeiro"
-            Municipio.atualizar_municipio(param.to_i, {nome: ARGV[2]})
+            Municipio.atualizar_municipio(params['id'], params)
         when 'deleta' # ruby municipios.rb deleta 1
-            Municipio.deletar_municipio(param.to_i)
+            Municipio.deletar_municipio(params['id'])
+        when 'help' # ruby municipios.rb help
+            puts "Atributos: nome, estado"
+            puts "Comandos: cria {atributos}, lista, atualiza {atributos}, deleta"
+            puts "Cria: ruby municipios.rb cria nome='São Paulo' estado=1"
+            puts "\t (estado deve ser um ID válido, caso contrário, será nulo)"
+            puts "Lista: ruby municipios.rb lista"
+            puts "Atualiza: ruby municipios.rb atualiza id=1 nome='Rio de Janeiro'"
+            puts "Deleta: ruby municipios.rb deleta id=1"
+
+
+
         # quando for vazio, não faz nada
         when nil
 

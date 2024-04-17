@@ -46,21 +46,31 @@ end
 # Process command line arguments
 command = ARGV[0]
 if ARGV[1] != nil
-    param = ARGV[1]
+    params = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
 end
 
 if __FILE__ == $0
     case command
         when 'cria' # ruby estados.rb cria "São Paulo"
-            Estado.criar_estado({nome: param})
+            nome = params['nome'] || 'n/a'
+            sigla = params['sigla'] || 'n/a'
+            codigo_uf = params['codigo_uf'] || 'n/a'
+
+            Estado.criar_estado({nome: nome, sigla: sigla, codigo_uf: codigo_uf})
         when 'lista' # ruby estados.rb lista
             Estado.listar_estados.each do |estado|
-                puts "ID: #{estado.id}, Nome: #{estado.nome}, Sigla: #{estado.sigla}"
+                puts "ID: #{estado&.id}, Nome: #{estado&.nome}, Sigla: #{estado&.sigla}, Código UF: #{estado&.codigo_uf}"
             end
         when 'atualiza' # ruby estados.rb atualiza 1 "Rio de Janeiro"
-            Estado.atualizar_estado(param.to_i, {nome: ARGV[2]})
+            Estado.atualizar_estado(params['id'], params)
         when 'deleta' # ruby estados.rb deleta 1
-            Estado.deletar_estado(param.to_i)
+            Estado.deletar_estado(params['id'])
+        when 'help' # ruby estados.rb help
+            puts 'Atributos: nome, sigla, codigo_uf'
+            puts "Comandos disponíveis: cria {atributos}, lista, atualiza {atributos}, deleta"
+            puts "Cria: ruby estados.rb cria nome=Mordor sigla=MD codigo_uf=73"
+            puts "Atualiza: ruby estados.rb atualiza id=1 nome='Minas Gerais'"
+            puts "Deleta: ruby estados.rb deleta id=1"
         # quando for vazio, não faz nada
         when nil
 

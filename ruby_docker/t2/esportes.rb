@@ -1,3 +1,4 @@
+$:.push './'
 require 'active_record'
 
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'Tabelas.sqlite3')
@@ -17,8 +18,8 @@ class Esporte < ActiveRecord::Base
     end
 
     # Update
-    def self.atualizar_esporte(id, params)
-        esporte = self.find(id)
+    def self.atualizar_esporte(params)
+        esporte = self.find(params['id'])
         esporte.update(params)
     end
 
@@ -27,6 +28,9 @@ class Esporte < ActiveRecord::Base
         esporte = self.find(id)
         # Remove all associations
         esporte.pessoas.clear
+        Pessoa.listar_pessoas.each do |pessoa|
+            pessoa.esportes.delete(esporte)
+        end
         esporte.destroy
     end
 end
@@ -40,15 +44,22 @@ end
 if __FILE__ == $0
     case command
         when 'cria' # ruby esportes.rb cria "Futebol"
-            Esporte.criar_esporte({nome: param})
+            nome = param['nome'] || 'n/a'
+            Esporte.criar_esporte({nome: nome})
         when 'lista' # ruby esportes.rb lista
             Esporte.listar_esportes.each do |esporte|
-                puts "ID: #{esporte.id}, Nome: #{esporte.nome}"
+                puts "ID: #{esporte&.id}, Nome: #{esporte&.nome}"
             end
         when 'altera' # ruby esportes.rb atualiza 1 "Futebol"
-            Esporte.atualizar_esporte(param.to_i, {nome: ARGV[2]})
+            Esporte.atualizar_esporte(params)
         when 'deleta'
-            Esporte.deletar_esporte(param.to_i)
+            Esporte.deletar_esporte(params['id'])
+        when 'help'
+            puts "Atributos: nome"
+            puts "Comandos: cria {atributos}, lista, atualiza {atributos}, deleta"
+            puts "Cria: ruby esportes.rb cria nome='Futebol'"
+            puts "Atualiza: ruby esportes.rb atualiza id=1 nome='Futebol'"
+            puts "Deleta: ruby esportes.rb deleta id=1"
         # quando for vazio, não faz nada
         when nil
 
