@@ -194,29 +194,6 @@ CODIGO_UF,NOME
 22,Agricolândia
 22,Água Branca
 22,Alagoinha do Piauí
-22,Alegrete do Piauí
-22,Alto Longá
-22,Altos
-22,Alvorada do Gurguéia
-22,Amarante
-22,Angical do Piauí
-22,Tanque do Piauí
-22,Teresina
-22,União
-22,Uruçuí
-22,Valença do Piauí
-22,Várzea Branca
-22,Várzea Grande
-22,Vera Mendes
-22,Vila Nova do Piauí
-22,Wall Ferraz
-23,Abaiara
-23,Acarape
-23,Acaraú
-23,Acopiara
-23,Aiuaba
-23,Alcântaras
-23,Altaneira
 23,Alto Santo
 23,Amontada
 23,Antonina do Norte
@@ -230,31 +207,6 @@ CODIGO_UF,NOME
 23,Arneiroz
 23,Assaré
 23,Aurora
-23,Uruburetama
-23,Uruoca
-23,Varjota
-23,Várzea Alegre
-23,Viçosa do Ceará
-24,Acari
-24,Açu
-24,Afonso Bezerra
-24,Água Nova
-24,Alexandria
-24,Almino Afonso
-24,Alto do Rodrigues
-24,Angicos
-24,Antônio Martins
-24,Severiano Melo
-24,Sítio Novo
-24,Taboleiro Grande
-24,Taipu
-24,Tangará
-24,Tenente Ananias
-24,Tenente Laurentino Cruz
-24,Tibau do Sul
-24,Timbaúba dos Batistas
-24,Touros
-24,Triunfo Potiguar
 24,Umarizal
 24,Upanema
 24,Várzea
@@ -306,121 +258,11 @@ CODIGO_UF,NOME
 27,Boca da Mata
 27,Branquinha
 27,Cacimbinhas
-27,Cajueiro
-27,Campestre
-27,Campo Alegre
-27,Campo Grande
-27,Canapi
-27,Capela
-27,Carneiros
-27,Chã Preta
-27,Coité do Nóia
-27,Colônia Leopoldina
-27,Coqueiro Seco
-27,Coruripe
-27,Craíbas
-27,delmiro Gouveia
-27,dois Riachos
-27,Estrela de Alagoas
-27,Feira Grande
-27,Feliz deserto
-27,Flexeiras
-27,Girau do Ponciano
-27,Ibateguara
-27,Igaci
-27,Igreja Nova
-27,Inhapi
-27,Jacaré dos Homens
-27,Jacuípe
-27,Japaratinga
-27,Jaramataia
-27,Jequiá da Praia
-27,Joaquim Gomes
-27,Jundiá
-27,Junqueiro
-27,Lagoa da Canoa
-27,Limoeiro de Anadia
-27,Maceió
-27,Major Isidoro
-27,Maragogi
-27,Maravilha
-27,Marechal deodoro
-27,Maribondo
-27,Mar Vermelho
-27,Mata Grande
-27,Matriz de Camaragibe
-27,Messias
-27,Minador do Negrão
-27,Monteirópolis
-27,Murici
-27,Novo Lino
-27,Olho D'água das Flores
-27,Olho D'água do Casado
-27,Olho D'água Grande
-27,Olivença
-27,Ouro Branco
-27,Palestina
-27,Palmeira dos Índios
-27,Pão de Açúcar
-27,Pariconha
-27,Paripueira
-27,Passo de Camaragibe
 27,Paulo Jacinto
 27,Penedo
 27,Piaçabuçu
 27,Pilar
 27,Pindoba
-27,Piranhas
-27,Poço das Trincheiras
-27,Porto Calvo
-27,Porto de Pedras
-27,Porto Real do Colégio
-27,Quebrangulo
-27,Rio Largo
-27,Roteiro
-27,Santa Luzia do Norte
-27,Santana do Ipanema
-27,Santana do Mundaú
-27,São Brás
-27,São José da Laje
-27,São José da Tapera
-27,São Luís do Quitunde
-27,São Miguel dos Campos
-27,São Miguel dos Milagres
-27,São Sebastião
-27,Satuba
-27,Senador Rui Palmeira
-27,Tanque D'arca
-27,Taquarana
-27,Teotônio Vilela
-27,Traipu
-27,União dos Palmares
-27,Viçosa
-28,Amparo de São Francisco
-28,Aquidabã
-28,Aracaju
-28,Arauá
-28,Areia Branca
-28,Barra dos Coqueiros
-28,Boquim
-28,Brejo Grande
-28,Campo do Brito
-28,Canhoba
-28,Canindé de São Francisco
-28,Capela
-28,Carira
-28,Carmópolis
-28,Cedro de São João
-28,Cristinápolis
-28,Cumbe
-28,Divina Pastora
-28,Estância
-28,Feira Nova
-28,Frei Paulo
-28,Gararu
-28,General Maynard
-28,Gracho Cardoso
-28,Ilha das Flores
 28,Indiaroba
 28,Itabaiana
 28,Itabaianinha
@@ -429,38 +271,6 @@ CODIGO_UF,NOME
 28,Japaratuba
 28,Japoatã
 28,Lagarto
-28,Laranjeiras
-28,Macambira
-28,Malhada dos Bois
-28,Malhador
-28,Maruim
-28,Moita Bonita
-28,Monte Alegre de Sergipe
-28,Muribeca
-28,Neópolis
-28,Nossa Senhora Aparecida
-28,Nossa Senhora da Glória
-28,Nossa Senhora das dores
-28,Nossa Senhora de Lourdes
-28,Nossa Senhora do Socorro
-28,Pacatuba
-28,Pedra Mole
-28,Pedrinhas
-28,Pinhão
-28,Pirambu
-28,Poço Redondo
-28,Poço Verde
-28,Porto da Folha
-28,Propriá
-28,Riachão do dantas
-28,Riachuelo
-28,Ribeirópolis
-28,Rosário do Catete
-28,Salgado
-28,Santa Luzia do Itanhy
-28,Santana do São Francisco
-28,Santa Rosa de Lima
-28,Santo Amaro das Brotas
 28,São Cristóvão
 28,São domingos
 28,São Francisco
@@ -528,33 +338,6 @@ CODIGO_UF,NOME
 31,Mathias Lobato
 31,Virgem da Lapa
 31,Virgínia
-31,Virginópolis
-31,Virgolândia
-31,Visconde do Rio Branco
-31,Volta Grande
-31,Wenceslau Braz
-32,Afonso Cláudio
-32,Águia Branca
-32,Água doce do Norte
-32,Alegre
-32,Alfredo Chaves
-32,Alto Rio Novo
-32,Anchieta
-32,Apiacá
-32,Aracruz
-32,Atilio Vivacqua
-32,Baixo Guandu
-32,Barra de São Francisco
-32,Boa Esperança
-32,Bom Jesus do Norte
-32,Brejetuba
-32,Cachoeiro de Itapemirim
-32,Cariacica
-32,Castelo
-32,Colatina
-32,Conceição da Barra
-32,Conceição do Castelo
-32,Divino de São Lourenço
 32,domingos Martins
 32,dores do Rio Preto
 32,Ecoporanga
@@ -572,37 +355,6 @@ CODIGO_UF,NOME
 32,Itarana
 32,Iúna
 32,Jaguaré
-32,Jerônimo Monteiro
-32,João Neiva
-32,Laranja da Terra
-32,Linhares
-32,Mantenópolis
-32,Marataízes
-32,Marechal Floriano
-32,Marilândia
-32,Mimoso do Sul
-32,Montanha
-32,Mucurici
-32,Muniz Freire
-32,Muqui
-32,Nova Venécia
-32,Pancas
-32,Pedro Canário
-32,Pinheiros
-32,Piúma
-32,Ponto Belo
-32,Presidente Kennedy
-32,Rio Bananal
-32,Rio Novo do Sul
-32,Santa Leopoldina
-32,Santa Maria de Jetibá
-32,Santa Teresa
-32,São domingos do Norte
-32,São Gabriel da Palha
-32,São José do Calçado
-32,São Mateus
-32,São Roque do Canaã
-32,Serra
 32,Sooretama
 32,Vargem Alta
 32,Venda Nova do Imigrante
@@ -641,48 +393,6 @@ CODIGO_UF,NOME
 33,Iguaba Grande
 33,Itaboraí
 33,Itaguaí
-33,Italva
-33,Itaocara
-33,Itaperuna
-33,Itatiaia
-33,Japeri
-33,Laje do Muriaé
-33,Macaé
-33,Macuco
-33,Magé
-33,Mangaratiba
-33,Maricá
-33,Mendes
-33,Mesquita
-33,Miguel Pereira
-33,Miracema
-33,Natividade
-33,Nilópolis
-33,Niterói
-33,Nova Friburgo
-33,Nova Iguaçu
-33,Paracambi
-33,Paraíba do Sul
-33,Paraty
-33,Paty do Alferes
-33,Petrópolis
-33,Pinheiral
-33,Piraí
-33,Porciúncula
-33,Porto Real
-33,Quatis
-33,Queimados
-33,Quissamã
-33,Resende
-33,Rio Bonito
-33,Rio Claro
-33,Rio das Flores
-33,Rio das Ostras
-33,Rio de Janeiro
-33,Santa Maria Madalena
-33,Santo Antônio de Pádua
-33,São Francisco de Itabapoana
-33,São Fidélis
 33,São Gonçalo
 33,São João da Barra
 33,São João de Meriti
@@ -742,48 +452,6 @@ CODIGO_UF,NOME
 35,Araraquara
 35,Araras
 35,Arco-Íris
-35,Arealva
-35,Areias
-35,Areiópolis
-35,Ariranha
-35,Artur Nogueira
-35,Arujá
-35,Aspásia
-35,Assis
-35,Atibaia
-35,Auriflama
-35,Avaí
-35,Avanhandava
-35,Avaré
-35,Bady Bassitt
-35,Balbinos
-35,Bálsamo
-35,Bananal
-35,Barão de Antonina
-35,Barbosa
-35,Bariri
-35,Barra Bonita
-35,Barra do Chapéu
-35,Barra do Turvo
-35,Barretos
-35,Barrinha
-35,Barueri
-35,Bastos
-35,Batatais
-35,Bauru
-35,Bebedouro
-35,Bento de Abreu
-35,Bernardino de Campos
-35,Bertioga
-35,Bilac
-35,Birigui
-35,Biritiba-Mirim
-35,Boa Esperança do Sul
-35,Bocaina
-35,Bofete
-35,Boituva
-35,Bom Jesus dos Perdões
-35,Bom Sucesso de Itararé
 35,Borá
 35,Boracéia
 35,Borborema
@@ -804,115 +472,7 @@ CODIGO_UF,NOME
 35,Caconde
 35,Cafelândia
 35,Caiabu
-35,Caieiras
-35,Caiuá
-35,Cajamar
-35,Cajati
-35,Cajobi
-35,Cajuru
-35,Campina do Monte Alegre
-35,Campinas
-35,Campo Limpo Paulista
-35,Campos do Jordão
-35,Campos Novos Paulista
-35,Cananéia
-35,Canas
-35,Cândido Mota
-35,Cândido Rodrigues
-35,Canitar
-35,Capão Bonito
-35,Capela do Alto
-35,Capivari
-35,Caraguatatuba
-35,Carapicuíba
-35,Cardoso
-35,Casa Branca
-35,Cássia dos Coqueiros
-35,Castilho
-35,Catanduva
-35,Catiguá
-35,Cedral
-35,Cerqueira César
-35,Cerquilho
-35,Cesário Lange
-35,Charqueada
-35,Clementina
-35,Colina
-35,Colômbia
-35,Conchal
-35,Conchas
-35,Cordeirópolis
-35,Coroados
-35,Coronel Macedo
 35,Corumbataí
-35,Cosmópolis
-35,Cosmorama
-35,Cotia
-35,Cravinhos
-35,Cristais Paulista
-35,Cruzália
-35,Cruzeiro
-35,Cubatão
-35,Cunha
-35,descalvado
-35,Diadema
-35,Dirce Reis
-35,Divinolândia
-35,dobrada
-35,dois Córregos
-35,dolcinópolis
-35,dourado
-35,Dracena
-35,Duartina
-35,Dumont
-35,Echaporã
-35,Eldorado
-35,Elias Fausto
-35,Elisiário
-35,Embaúba
-35,Embu das Artes
-35,Embu-Guaçu
-35,Emilianópolis
-35,Engenheiro Coelho
-35,Espírito Santo do Pinhal
-35,Espírito Santo do Turvo
-35,Estrela D'oeste
-35,Estrela do Norte
-35,Euclides da Cunha Paulista
-35,Fartura
-35,Fernandópolis
-35,Fernando Prestes
-35,Fernão
-35,Ferraz de Vasconcelos
-35,Flora Rica
-35,Floreal
-35,Flórida Paulista
-35,Florínia
-35,Franca
-35,Francisco Morato
-35,Franco da Rocha
-35,Gabriel Monteiro
-35,Gália
-35,Garça
-35,Gastão Vidigal
-35,Gavião Peixoto
-35,General Salgado
-35,Getulina
-35,Glicério
-35,Guaiçara
-35,Guaimbê
-35,Guaíra
-35,Guapiaçu
-35,Guapiara
-35,Guará
-35,Guaraçaí
-35,Guaraci
-35,Guarani D'oeste
-35,Guarantã
-35,Guararapes
-35,Guararema
-35,Guaratinguetá
-35,Guareí
 35,Guariba
 35,Guarujá
 35,Guarulhos
@@ -960,35 +520,6 @@ CODIGO_UF,NOME
 35,Itapecerica da Serra
 35,Itapetininga
 35,Itapeva
-35,Itapevi
-35,Itapira
-35,Itapirapuã Paulista
-35,Itápolis
-35,Itaporanga
-35,Itapuí
-35,Itapura
-35,Itaquaquecetuba
-35,Itararé
-35,Itariri
-35,Itatiba
-35,Itatinga
-35,Itirapina
-35,Itirapuã
-35,Itobi
-35,Itu
-35,Itupeva
-35,Ituverava
-35,Jaborandi
-35,Jaboticabal
-35,Jacareí
-35,Jaci
-35,Jacupiranga
-35,Jaguariúna
-35,Jales
-35,Jambeiro
-35,Jandira
-35,Jardinópolis
-35,Jarinu
 35,Jaú
 35,Jeriquara
 35,Joanópolis
@@ -1011,45 +542,6 @@ CODIGO_UF,NOME
 35,Lins
 35,Lorena
 35,Lourdes
-35,Louveira
-35,Lucélia
-35,Lucianópolis
-35,Luís Antônio
-35,Luiziânia
-35,Lupércio
-35,Lutécia
-35,Macatuba
-35,Macaubal
-35,Macedônia
-35,Magda
-35,Mairinque
-35,Mairiporã
-35,Manduri
-35,Marabá Paulista
-35,Maracaí
-35,Marapoama
-35,Mariápolis
-35,Marília
-35,Marinópolis
-35,Martinópolis
-35,Matão
-35,Mauá
-35,Mendonça
-35,Meridiano
-35,Mesópolis
-35,Miguelópolis
-35,Mineiros do Tietê
-35,Miracatu
-35,Mira Estrela
-35,Mirandópolis
-35,Mirante do Paranapanema
-35,Mirassol
-35,Mirassolândia
-35,Mococa
-35,Mogi das Cruzes
-35,Mogi Guaçu
-35,Mogi Mirim
-35,Mombuca
 35,Monções
 35,Mongaguá
 35,Monte Alegre do Sul
@@ -1088,44 +580,6 @@ CODIGO_UF,NOME
 35,Olímpia
 35,Onda Verde
 35,Oriente
-35,Orindiúva
-35,Orlândia
-35,Osasco
-35,Oscar Bressane
-35,Osvaldo Cruz
-35,Ourinhos
-35,Ouroeste
-35,Ouro Verde
-35,Pacaembu
-35,Palestina
-35,Palmares Paulista
-35,Palmeira D'oeste
-35,Palmital
-35,Panorama
-35,Paraguaçu Paulista
-35,Paraibuna
-35,Paraíso
-35,Paranapanema
-35,Paranapuã
-35,Parapuã
-35,Pardinho
-35,Pariquera-Açu
-35,Parisi
-35,Patrocínio Paulista
-35,Paulicéia
-35,Paulínia
-35,Paulistânia
-35,Paulo de Faria
-35,Pederneiras
-35,Pedra Bela
-35,Pedranópolis
-35,Pedregulho
-35,Pedreira
-35,Pedrinhas Paulista
-35,Pedro de Toledo
-35,Penápolis
-35,Pereira Barreto
-35,Pereiras
 35,Peruíbe
 35,Piacatu
 35,Piedade
@@ -1205,53 +659,6 @@ CODIGO_UF,NOME
 35,Rubinéia
 35,Sabino
 35,Sagres
-35,Sales
-35,Sales Oliveira
-35,Salesópolis
-35,Salmourão
-35,Saltinho
-35,Salto
-35,Salto de Pirapora
-35,Salto Grande
-35,Sandovalina
-35,Santa Adélia
-35,Santa Albertina
-35,Santa Bárbara D'oeste
-35,Santa Branca
-35,Santa Clara D'oeste
-35,Santa Cruz da Conceição
-35,Santa Cruz da Esperança
-35,Santa Cruz das Palmeiras
-35,Santa Cruz do Rio Pardo
-35,Santa Ernestina
-35,Santa Fé do Sul
-35,Santa Gertrudes
-35,Santa Isabel
-35,Santa Lúcia
-35,Santa Maria da Serra
-35,Santa Mercedes
-35,Santana da Ponte Pensa
-35,Santana de Parnaíba
-35,Santa Rita D'oeste
-35,Santa Rita do Passa Quatro
-35,Santa Rosa de Viterbo
-35,Santa Salete
-35,Santo Anastácio
-35,Santo André
-35,Santo Antônio da Alegria
-35,Santo Antônio de Posse
-35,Santo Antônio do Aracanguá
-35,Santo Antônio do Jardim
-35,Santo Antônio do Pinhal
-35,Santo Expedito
-35,Santópolis do Aguapeí
-35,Santos
-35,São Bento do Sapucaí
-35,São Bernardo do Campo
-35,São Caetano do Sul
-35,São Carlos
-35,São Francisco
-35,São João da Boa Vista
 35,São João das Duas Pontes
 35,São João de Iracema
 35,São João do Pau D'alho
@@ -1309,51 +716,6 @@ CODIGO_UF,NOME
 35,Tatuí
 35,Taubaté
 35,Tejupá
-35,Teodoro Sampaio
-35,Terra Roxa
-35,Tietê
-35,Timburi
-35,Torre de Pedra
-35,Torrinha
-35,Trabiju
-35,Tremembé
-35,Três Fronteiras
-35,Tuiuti
-35,Tupã
-35,Tupi Paulista
-35,Turiúba
-35,Turmalina
-35,Ubarana
-35,Ubatuba
-35,Ubirajara
-35,Uchoa
-35,União Paulista
-35,Urânia
-35,Uru
-35,Urupês
-35,Valentim Gentil
-35,Valinhos
-35,Valparaíso
-35,Vargem
-35,Vargem Grande do Sul
-35,Vargem Grande Paulista
-35,Várzea Paulista
-35,Vera Cruz
-35,Vinhedo
-35,Viradouro
-35,Vista Alegre do Alto
-35,Vitória Brasil
-35,Votorantim
-35,Votuporanga
-35,Zacarias
-35,Chavantes
-35,Estiva Gerbi
-41,Abatiá
-41,Adrianópolis
-41,Agudos do Sul
-41,Almirante Tamandaré
-41,Altamira do Paraná
-41,Altônia
 41,Alto Paraná
 41,Alto Piquiri
 41,Alvorada do Sul
@@ -1364,30 +726,6 @@ CODIGO_UF,NOME
 41,Ângulo
 41,Antonina
 41,Antônio Olinto
-41,Apucarana
-41,Arapongas
-41,Arapoti
-41,Arapuã
-41,Araruna
-41,Araucária
-41,Ariranha do Ivaí
-41,Assaí
-41,Assis Chateaubriand
-41,Astorga
-41,Atalaia
-41,Balsa Nova
-41,Bandeirantes
-41,Barbosa Ferraz
-41,Barracão
-41,Barra do Jacaré
-41,Bela Vista da Caroba
-41,Bela Vista do Paraíso
-41,Bituruna
-41,Boa Esperança
-41,Boa Esperança do Iguaçu
-41,Boa Ventura de São Roque
-41,Boa Vista da Aparecida
-41,Bocaiúva do Sul
 41,Bom Jesus do Sul
 41,Bom Sucesso
 41,Bom Sucesso do Sul
@@ -1420,237 +758,6 @@ CODIGO_UF,NOME
 41,Castro
 41,Catanduvas
 41,Centenário do Sul
-41,Cerro Azul
-41,Céu Azul
-41,Chopinzinho
-41,Cianorte
-41,Cidade Gaúcha
-41,Clevelândia
-41,Colombo
-41,Colorado
-41,Congonhinhas
-41,Conselheiro Mairinck
-41,Contenda
-41,Corbélia
-41,Cornélio Procópio
-41,Coronel domingos Soares
-41,Coronel Vivida
-41,Corumbataí do Sul
-41,Cruzeiro do Iguaçu
-41,Cruzeiro do Oeste
-41,Cruzeiro do Sul
-41,Cruz Machado
-41,Cruzmaltina
-41,Curitiba
-41,Curiúva
-41,Diamante do Norte
-41,Diamante do Sul
-41,Diamante D'oeste
-41,dois Vizinhos
-41,douradina
-41,doutor Camargo
-41,Enéas Marques
-41,Engenheiro Beltrão
-41,Esperança Nova
-41,Entre Rios do Oeste
-41,Espigão Alto do Iguaçu
-41,Farol
-41,Faxinal
-41,Fazenda Rio Grande
-41,Fênix
-41,Fernandes Pinheiro
-41,Figueira
-41,Floraí
-41,Flor da Serra do Sul
-41,Floresta
-41,Florestópolis
-41,Flórida
-41,Formosa do Oeste
-41,Foz do Iguaçu
-41,Francisco Alves
-41,Francisco Beltrão
-41,Foz do Jordão
-41,General Carneiro
-41,Godoy Moreira
-41,Goioerê
-41,Goioxim
-41,Grandes Rios
-41,Guaíra
-41,Guairaçá
-41,Guamiranga
-41,Guapirama
-41,Guaporema
-41,Guaraci
-41,Guaraniaçu
-41,Guarapuava
-41,Guaraqueçaba
-41,Guaratuba
-41,Honório Serpa
-41,Ibaiti
-41,Ibema
-41,Ibiporã
-41,Icaraíma
-41,Iguaraçu
-41,Iguatu
-41,Imbaú
-41,Imbituva
-41,Inácio Martins
-41,Inajá
-41,Indianópolis
-41,Ipiranga
-41,Iporã
-41,Iracema do Oeste
-41,Irati
-41,Iretama
-41,Itaguajé
-41,Itaipulândia
-41,Itambaracá
-41,Itambé
-41,Itapejara D'oeste
-41,Itaperuçu
-41,Itaúna do Sul
-41,Ivaí
-41,Ivaiporã
-41,Ivaté
-41,Ivatuba
-41,Jaboti
-41,Jacarezinho
-41,Jaguapitã
-41,Jaguariaíva
-41,Jandaia do Sul
-41,Janiópolis
-41,Japira
-41,Japurá
-41,Jardim Alegre
-41,Jardim Olinda
-41,Jataizinho
-41,Jesuítas
-41,Joaquim Távora
-41,Jundiaí do Sul
-41,Juranda
-41,Jussara
-41,Kaloré
-41,Lapa
-41,Laranjal
-41,Laranjeiras do Sul
-41,Leópolis
-41,Lidianópolis
-41,Lindoeste
-41,Loanda
-41,Lobato
-41,Londrina
-41,Luiziana
-41,Lunardelli
-41,Lupionópolis
-41,Mallet
-41,Mamborê
-41,Mandaguaçu
-41,Mandaguari
-41,Mandirituba
-41,Manfrinópolis
-41,Mangueirinha
-41,Manoel Ribas
-41,Marechal Cândido Rondon
-41,Maria Helena
-41,Marialva
-41,Marilândia do Sul
-41,Marilena
-41,Mariluz
-41,Maringá
-41,Mariópolis
-41,Maripá
-41,Marmeleiro
-41,Marquinho
-41,Marumbi
-41,Matelândia
-41,Matinhos
-41,Mato Rico
-41,Mauá da Serra
-41,Medianeira
-41,Mercedes
-41,Mirador
-41,Miraselva
-41,Missal
-41,Moreira Sales
-41,Morretes
-41,Munhoz de Melo
-41,Nossa Senhora das Graças
-41,Nova Aliança do Ivaí
-41,Nova América da Colina
-41,Nova Aurora
-41,Nova Cantu
-41,Nova Esperança
-41,Nova Esperança do Sudoeste
-41,Nova Fátima
-41,Nova Laranjeiras
-41,Nova Londrina
-41,Nova Olímpia
-41,Nova Santa Bárbara
-41,Nova Santa Rosa
-41,Nova Prata do Iguaçu
-41,Nova Tebas
-41,Novo Itacolomi
-41,Ortigueira
-41,Ourizona
-41,Ouro Verde do Oeste
-41,Paiçandu
-41,Palmas
-41,Palmeira
-41,Palmital
-41,Palotina
-41,Paraíso do Norte
-41,Paranacity
-41,Paranaguá
-41,Paranapoema
-41,Paranavaí
-41,Pato Bragado
-41,Pato Branco
-41,Paula Freitas
-41,Paulo Frontin
-41,Peabiru
-41,Perobal
-41,Pérola
-41,Pérola D'oeste
-41,Piên
-41,Pinhais
-41,Pinhalão
-41,Pinhal de São Bento
-41,Pinhão
-41,Piraí do Sul
-41,Piraquara
-41,Pitanga
-41,Pitangueiras
-41,Planaltina do Paraná
-41,Planalto
-41,Ponta Grossa
-41,Pontal do Paraná
-41,Porecatu
-41,Porto Amazonas
-41,Porto Barreiro
-41,Porto Rico
-41,Porto Vitória
-41,Prado Ferreira
-41,Pranchita
-41,Presidente Castelo Branco
-41,Primeiro de Maio
-41,Prudentópolis
-41,Quarto Centenário
-41,Quatiguá
-41,Quatro Barras
-41,Quatro Pontes
-41,Quedas do Iguaçu
-41,Querência do Norte
-41,Quinta do Sol
-41,Quitandinha
-41,Ramilândia
-41,Rancho Alegre
-41,Rancho Alegre D'oeste
-41,Realeza
-41,Rebouças
-41,Renascença
-41,Reserva
-41,Reserva do Iguaçu
-41,Ribeirão Claro
 41,Ribeirão do Pinhal
 41,Rio Azul
 41,Rio Bom
@@ -1661,54 +768,6 @@ CODIGO_UF,NOME
 41,Rolândia
 41,Roncador
 41,Rondon
-41,Rosário do Ivaí
-41,Sabáudia
-41,Salgado Filho
-41,Salto do Itararé
-41,Salto do Lontra
-41,Santa Amélia
-41,Santa Cecília do Pavão
-41,Santa Cruz de Monte Castelo
-41,Santa Fé
-41,Santa Helena
-41,Santa Inês
-41,Santa Isabel do Ivaí
-41,Santa Izabel do Oeste
-41,Santa Lúcia
-41,Santa Maria do Oeste
-41,Santa Mariana
-41,Santa Mônica
-41,Santana do Itararé
-41,Santa Tereza do Oeste
-41,Santa Terezinha de Itaipu
-41,Santo Antônio da Platina
-41,Santo Antônio do Caiuá
-41,Santo Antônio do Paraíso
-41,Santo Antônio do Sudoeste
-41,Santo Inácio
-41,São Carlos do Ivaí
-41,São Jerônimo da Serra
-41,São João
-41,São João do Caiuá
-41,São João do Ivaí
-41,São João do Triunfo
-41,São Jorge D'oeste
-41,São Jorge do Ivaí
-41,São Jorge do Patrocínio
-41,São José da Boa Vista
-41,São José das Palmeiras
-41,São José dos Pinhais
-41,São Manoel do Paraná
-41,São Mateus do Sul
-41,São Miguel do Iguaçu
-41,São Pedro do Iguaçu
-41,São Pedro do Ivaí
-41,São Pedro do Paraná
-41,São Sebastião da Amoreira
-41,São Tomé
-41,Sapopema
-41,Sarandi
-41,Saudade do Iguaçu
 41,Sengés
 41,Serranópolis do Iguaçu
 41,Sertaneja
@@ -1744,115 +803,6 @@ CODIGO_UF,NOME
 41,Verê
 41,Alto Paraíso
 41,doutor Ulysses
-41,Virmond
-41,Vitorino
-41,Xambrê
-42,Abdon Batista
-42,Abelardo Luz
-42,Agrolândia
-42,Agronômica
-42,Água doce
-42,Águas de Chapecó
-42,Águas Frias
-42,Águas Mornas
-42,Alfredo Wagner
-42,Alto Bela Vista
-42,Anchieta
-42,Angelina
-42,Anita Garibaldi
-42,Anitápolis
-42,Antônio Carlos
-42,Apiúna
-42,Arabutã
-42,Araquari
-42,Araranguá
-42,Armazém
-42,Arroio Trinta
-42,Arvoredo
-42,Ascurra
-42,Atalanta
-42,Aurora
-42,Balneário Arroio do Silva
-42,Balneário Camboriú
-42,Balneário Barra do Sul
-42,Balneário Gaivota
-42,Bandeirante
-42,Barra Bonita
-42,Barra Velha
-42,Bela Vista do Toldo
-42,Belmonte
-42,Benedito Novo
-42,Biguaçu
-42,Blumenau
-42,Bocaina do Sul
-42,Bombinhas
-42,Bom Jardim da Serra
-42,Bom Jesus
-42,Bom Jesus do Oeste
-42,Bom Retiro
-42,Botuverá
-42,Braço do Norte
-42,Braço do Trombudo
-42,Brunópolis
-42,Brusque
-42,Caçador
-42,Caibi
-42,Calmon
-42,Camboriú
-42,Capão Alto
-42,Campo Alegre
-42,Campo Belo do Sul
-42,Campo Erê
-42,Campos Novos
-42,Canelinha
-42,Canoinhas
-42,Capinzal
-42,Capivari de Baixo
-42,Catanduvas
-42,Caxambu do Sul
-42,Celso Ramos
-42,Cerro Negro
-42,Chapadão do Lageado
-42,Chapecó
-42,Cocal do Sul
-42,Concórdia
-42,Cordilheira Alta
-42,Coronel Freitas
-42,Coronel Martins
-42,Corupá
-42,Correia Pinto
-42,Criciúma
-42,Cunha Porã
-42,Cunhataí
-42,Curitibanos
-42,descanso
-42,Dionísio Cerqueira
-42,dona Emma
-42,doutor Pedrinho
-42,Entre Rios
-42,Ermo
-42,Erval Velho
-42,Faxinal dos Guedes
-42,Flor do Sertão
-42,Florianópolis
-42,Formosa do Sul
-42,Forquilhinha
-42,Fraiburgo
-42,Frei Rogério
-42,Galvão
-42,Garopaba
-42,Garuva
-42,Gaspar
-42,Governador Celso Ramos
-42,Grão Pará
-42,Gravatal
-42,Guabiruba
-42,Guaraciaba
-42,Guaramirim
-42,Guarujá do Sul
-42,Guatambú
-42,Herval D'oeste
-42,Ibiam
 42,Ibicaré
 42,Ibirama
 42,Içara
@@ -1866,161 +816,6 @@ CODIGO_UF,NOME
 42,Iporã do Oeste
 42,Ipuaçu
 42,Ipumirim
-42,Iraceminha
-42,Irani
-42,Irati
-42,Irineópolis
-42,Itá
-42,Itaiópolis
-42,Itajaí
-42,Itapema
-42,Itapiranga
-42,Itapoá
-42,Ituporanga
-42,Jaborá
-42,Jacinto Machado
-42,Jaguaruna
-42,Jaraguá do Sul
-42,Jardinópolis
-42,Joaçaba
-42,Joinville
-42,José Boiteux
-42,Jupiá
-42,Lacerdópolis
-42,Lages
-42,Laguna
-42,Lajeado Grande
-42,Laurentino
-42,Lauro Muller
-42,Lebon Régis
-42,Leoberto Leal
-42,Lindóia do Sul
-42,Lontras
-42,Luiz Alves
-42,Luzerna
-42,Macieira
-42,Mafra
-42,Major Gercino
-42,Major Vieira
-42,Maracajá
-42,Maravilha
-42,Marema
-42,Massaranduba
-42,Matos Costa
-42,Meleiro
-42,Mirim doce
-42,Modelo
-42,Mondaí
-42,Monte Carlo
-42,Monte Castelo
-42,Morro da Fumaça
-42,Morro Grande
-42,Navegantes
-42,Nova Erechim
-42,Nova Itaberaba
-42,Nova Trento
-42,Nova Veneza
-42,Novo Horizonte
-42,Orleans
-42,Otacílio Costa
-42,Ouro
-42,Ouro Verde
-42,Paial
-42,Painel
-42,Palhoça
-42,Palma Sola
-42,Palmeira
-42,Palmitos
-42,Papanduva
-42,Paraíso
-42,Passo de Torres
-42,Passos Maia
-42,Paulo Lopes
-42,Pedras Grandes
-42,Penha
-42,Peritiba
-42,Pescaria Brava
-42,Petrolândia
-42,Balneário Piçarras
-42,Pinhalzinho
-42,Pinheiro Preto
-42,Piratuba
-42,Planalto Alegre
-42,Pomerode
-42,Ponte Alta
-42,Ponte Alta do Norte
-42,Ponte Serrada
-42,Porto Belo
-42,Porto União
-42,Pouso Redondo
-42,Praia Grande
-42,Presidente Castello Branco
-42,Presidente Getúlio
-42,Presidente Nereu
-42,Princesa
-42,Quilombo
-42,Rancho Queimado
-42,Rio das Antas
-42,Rio do Campo
-42,Rio do Oeste
-42,Rio dos Cedros
-42,Rio do Sul
-42,Rio Fortuna
-42,Rio Negrinho
-42,Rio Rufino
-42,Riqueza
-42,Rodeio
-42,Romelândia
-42,Salete
-42,Saltinho
-42,Salto Veloso
-42,Sangão
-42,Santa Cecília
-42,Santa Helena
-42,Santa Rosa de Lima
-42,Santa Rosa do Sul
-42,Santa Terezinha
-42,Santa Terezinha do Progresso
-42,Santiago do Sul
-42,Santo Amaro da Imperatriz
-42,São Bernardino
-42,São Bento do Sul
-42,São Bonifácio
-42,São Carlos
-42,São Cristovão do Sul
-42,São domingos
-42,São Francisco do Sul
-42,São João do Oeste
-42,São João Batista
-42,São João do Itaperiú
-42,São João do Sul
-42,São Joaquim
-42,São José
-42,São José do Cedro
-42,São José do Cerrito
-42,São Lourenço do Oeste
-42,São Ludgero
-42,São Martinho
-42,São Miguel da Boa Vista
-42,São Miguel do Oeste
-42,São Pedro de Alcântara
-42,Saudades
-42,Schroeder
-42,Seara
-42,Serra Alta
-42,Siderópolis
-42,Sombrio
-42,Sul Brasil
-42,Taió
-42,Tangará
-42,Tigrinhos
-42,Tijucas
-42,Timbé do Sul
-42,Timbó
-42,Timbó Grande
-42,Três Barras
-42,Treviso
-42,Treze de Maio
 42,Treze Tílias
 42,Trombudo Central
 42,Tubarão
@@ -2037,47 +832,6 @@ CODIGO_UF,NOME
 42,Videira
 42,Vitor Meireles
 42,Witmarsum
-42,Xanxerê
-42,Xavantina
-42,Xaxim
-42,Zortéa
-42,Balneário Rincão
-43,Aceguá
-43,Água Santa
-43,Agudo
-43,Ajuricaba
-43,Alecrim
-43,Alegrete
-43,Alegria
-43,Almirante Tamandaré do Sul
-43,Alpestre
-43,Alto Alegre
-43,Alto Feliz
-43,Alvorada
-43,Amaral Ferrador
-43,Ametista do Sul
-43,André da Rocha
-43,Anta Gorda
-43,Antônio Prado
-43,Arambaré
-43,Araricá
-43,Aratiba
-43,Arroio do Meio
-43,Arroio do Sal
-43,Arroio do Padre
-43,Arroio dos Ratos
-43,Arroio do Tigre
-43,Arroio Grande
-43,Arvorezinha
-43,Augusto Pestana
-43,Áurea
-43,Bagé
-43,Balneário Pinhal
-43,Barão
-43,Barão de Cotegipe
-43,Barão do Triunfo
-43,Barracão
-43,Santa Tereza
 43,Santa Vitória do Palmar
 43,Santiago
 43,Santo Ângelo
@@ -2093,130 +847,6 @@ CODIGO_UF,NOME
 43,São Francisco de Assis
 43,São Francisco de Paula
 43,São Gabriel
-43,São Jerônimo
-43,São João da Urtiga
-43,São João do Polêsine
-43,São Jorge
-43,São José das Missões
-43,São José do Herval
-43,São José do Hortêncio
-43,São José do Inhacorá
-43,São José do Norte
-43,São José do Ouro
-43,São José do Sul
-43,São José dos Ausentes
-43,São Leopoldo
-43,São Lourenço do Sul
-43,São Luiz Gonzaga
-43,São Marcos
-43,São Martinho
-43,São Martinho da Serra
-43,São Miguel das Missões
-43,São Nicolau
-43,São Paulo das Missões
-43,São Pedro da Serra
-43,São Pedro das Missões
-43,São Pedro do Butiá
-43,São Pedro do Sul
-43,São Sebastião do Caí
-43,São Sepé
-43,São Valentim
-43,São Valentim do Sul
-43,São Valério do Sul
-43,São Vendelino
-43,São Vicente do Sul
-43,Sapiranga
-43,Sapucaia do Sul
-43,Sarandi
-43,Seberi
-43,Sede Nova
-43,Segredo
-43,Selbach
-43,Senador Salgado Filho
-43,Sentinela do Sul
-43,Serafina Corrêa
-43,Sério
-43,Sertão
-43,Sertão Santana
-43,Sete de Setembro
-43,Severiano de Almeida
-43,Silveira Martins
-43,Sinimbu
-43,Sobradinho
-43,Soledade
-43,Tabaí
-43,Tapejara
-43,Tapera
-43,Tapes
-43,Taquara
-43,Taquari
-43,Taquaruçu do Sul
-43,Tavares
-43,Tenente Portela
-43,Terra de Areia
-43,Teutônia
-43,Tio Hugo
-43,Tiradentes do Sul
-43,Vitória das Missões
-43,Westfalia
-43,Xangri-Lá
-50,Água Clara
-50,Alcinópolis
-50,Amambai
-50,Anastácio
-50,Anaurilândia
-50,Angélica
-50,Antônio João
-50,Aparecida do Taboado
-50,Aquidauana
-50,Aral Moreira
-50,Bandeirantes
-50,Bataguassu
-50,Batayporã
-50,Bela Vista
-50,Bodoquena
-50,Bonito
-50,Brasilândia
-50,Caarapó
-50,Camapuã
-50,Campo Grande
-50,Caracol
-50,Cassilândia
-50,Chapadão do Sul
-50,Corguinho
-50,Coronel Sapucaia
-50,Corumbá
-50,Costa Rica
-50,Coxim
-50,deodápolis
-50,dois Irmãos do Buriti
-50,douradina
-50,dourados
-50,Eldorado
-50,Fátima do Sul
-50,Figueirão
-50,Glória de dourados
-50,Guia Lopes da Laguna
-50,Iguatemi
-50,Inocência
-50,Itaporã
-50,Itaquiraí
-50,Ivinhema
-50,Japorã
-50,Jaraguari
-50,Jardim
-50,Jateí
-50,Juti
-50,Ladário
-50,Laguna Carapã
-50,Maracaju
-50,Miranda
-50,Mundo Novo
-50,Naviraí
-50,Nioaque
-50,Nova Alvorada do Sul
-50,Nova Andradina
-50,Novo Horizonte do Sul
 50,Paraíso das Águas
 50,Paranaíba
 50,Paranhos
