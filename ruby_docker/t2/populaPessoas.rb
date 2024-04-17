@@ -14,14 +14,15 @@ require 'csv'
         pessoa.universidade = row['UNIVERSIDADE']
         
         # Estado
-        pessoa.estado_id = Estado.find_by(sigla: row['ESTADO_ID'])
+        estado = Estado.find_by(sigla: row['ESTADO_ID'])
+        pessoa.estado = estado
 
         # Documento
         documento = Documento.new()
         documento.rg = row['RG']
         documento.cpf = row['CPF']
         documento.titulo_eleitor = row['TITULO_ELEITOR']
-        documento.pessoa_id = pessoa.id
+        documento.pessoa = pessoa
         documento.save
 
         pessoa.save
