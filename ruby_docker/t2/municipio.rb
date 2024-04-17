@@ -31,13 +31,13 @@ class Municipio < ActiveRecord::Base;
     end
 end
 
+if __FILE__ == $0
 # Process command line arguments
 command = ARGV[0]
 if ARGV[1] != nil
     params = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
 end
 
-if __FILE__ == $0
     case command
         when 'cria' # ruby municipios.rb cria 1 "São Paulo"
             nome = params['nome'] || 'n/a'

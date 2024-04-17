@@ -1,8 +1,8 @@
 $:.push './'
 require 'active_record'
-require_relative 'estado.rb'
-require_relative 'documento.rb'
-require_relative 'esportes.rb'
+require 'estado.rb'
+require 'documento.rb'
+require 'esportes.rb'
 
 
 ActiveRecord::Base.establish_connection :adapter => "sqlite3", :database => "Tabelas.sqlite3"
@@ -40,13 +40,13 @@ class Pessoa < ActiveRecord::Base;
     end
 end
 
+if __FILE__ == $0
 # Process command line arguments
 command = ARGV[0]
 if ARGV[1] != nil
     params = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
 end
 
-if __FILE__ == $0
     case command
         when 'cria' # ruby pessoas.rb cria "João"
             nome = params['nome'] || 'n/a'
