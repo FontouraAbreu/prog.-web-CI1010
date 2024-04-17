@@ -1,5 +1,7 @@
+$:.push './'
 require 'active_record'
 require 'pessoa.rb'
+
 
 ActiveRecord::Base.establish_connection :adapter => "sqlite3", :database => "Tabelas.sqlite3"
 
@@ -36,22 +38,27 @@ end
 
 # Process command line arguments
 command = ARGV[0]
-param = ARGV[1]
+if ARGV[1] != nil
+    param = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
+end
 
-case command
-    when 'cria' # ruby documentos.rb cria 1 "123456789"
-        Documento.criar_documento({pessoa_id: param.to_i, numero: ARGV[2]})
-    when 'lista' # ruby documentos.rb lista
-        Documento.listar_documentos.each do |documento|
-            puts "ID: #{documento.id}, Pessoa ID: #{documento.pessoa_id}, Número: #{documento.numero}"
-        end
-    when 'atualiza' # ruby documentos.rb atualiza 1 "987654321"
-        Documento.atualizar_documento(param.to_i, {numero: ARGV[2]})
-    when 'deleta' # ruby documentos.rb deleta 1
-        Documento.deletar_documento(param.to_i)
-    # quando for vazio, não faz nada
-    when nil
-        
-    else
-        puts "Comando desconhecido: #{command}"
+if __FILE__ == $0
+    case command
+        when 'cria' # ruby documentos.rb cria 1 "123456789"
+            Documento.criar_documento({pessoa_id: param})
+        when 'lista' # ruby documentos.rb lista
+            Documento.listar_documentos.each do |documento|
+                pessoa = Pessoa.find_by(id: documento.pessoa_id)
+                puts "ID: #{documento.id}, Pessoa ID: #{pessoa.nome}, RG: #{documento.rg}, CPF: #{documento.cpf}, Titulo de Eleitor: #{documento.titulo_eleitor}"
+            end
+        when 'atualiza' # ruby documentos.rb atualiza 1 "987654321"
+            Documento.atualizar_documento(param.to_i, {numero: ARGV[2]})
+        when 'deleta' # ruby documentos.rb deleta 1
+            Documento.deletar_documento(param.to_i)
+        # quando for vazio, não faz nada
+        when nil
+
+        else
+            puts "Comando desconhecido: #{command}"
+    end
 end

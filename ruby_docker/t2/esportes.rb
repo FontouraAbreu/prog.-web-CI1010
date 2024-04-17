@@ -33,21 +33,26 @@ end
 
 # Process command line arguments
 command = ARGV[0]
-param = ARGV[1]
+if ARGV[1] != nil
+    param = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
+end
 
-case command
-    when 'cria' # ruby esportes.rb cria "Futebol"
-        Esporte.criar_esporte({nome: param})
-    when 'lista' # ruby esportes.rb lista
-        esporte = Esporte.listar_esportes()
-        puts esporte.nome
-    when 'altera' # ruby esportes.rb atualiza 1 "Futebol"
-        Esporte.atualizar_esporte(param.to_i, {nome: ARGV[2]})
-    when 'deleta'
-        Esporte.deletar_esporte(param.to_i)
-    # quando for vazio, não faz nada
-    when nil
+if __FILE__ == $0
+    case command
+        when 'cria' # ruby esportes.rb cria "Futebol"
+            Esporte.criar_esporte({nome: param})
+        when 'lista' # ruby esportes.rb lista
+            Esporte.listar_esportes.each do |esporte|
+                puts "ID: #{esporte.id}, Nome: #{esporte.nome}"
+            end
+        when 'altera' # ruby esportes.rb atualiza 1 "Futebol"
+            Esporte.atualizar_esporte(param.to_i, {nome: ARGV[2]})
+        when 'deleta'
+            Esporte.deletar_esporte(param.to_i)
+        # quando for vazio, não faz nada
+        when nil
 
-    else
-        puts "Comando desconhecido: #{command}"
+        else
+            puts "Comando desconhecido: #{command}"
+    end
 end

@@ -1,12 +1,11 @@
 require 'active_record'
-require 'pessoa.rb'
-require 'municipio.rb'
 
 ActiveRecord::Base.establish_connection:adapter => 'sqlite3', :database => 'Tabelas.sqlite3'
 
 # Ative record will pluralize the class name to find the table name
 class Estado < ActiveRecord::Base
-
+    has_many :municipios
+    has_many :pessoas
 
     # Create
     def self.criar_estado(params)
@@ -46,22 +45,26 @@ end
 
 # Process command line arguments
 command = ARGV[0]
-param = ARGV[1]
+if ARGV[1] != nil
+    param = ARGV[1]
+end
 
-case command
-    when 'cria' # ruby estados.rb cria "São Paulo"
-        Estado.criar_estado({nome: param})
-    when 'lista' # ruby estados.rb lista
-        Estado.listar_estados.each do |estado|
-            puts estado.nome
-        end
-    when 'atualiza' # ruby estados.rb atualiza 1 "Rio de Janeiro"
-        Estado.atualizar_estado(param.to_i, {nome: ARGV[2]})
-    when 'deleta' # ruby estados.rb deleta 1
-        Estado.deletar_estado(param.to_i)
-    # quando for vazio, não faz nada
-    when nil
+if __FILE__ == $0
+    case command
+        when 'cria' # ruby estados.rb cria "São Paulo"
+            Estado.criar_estado({nome: param})
+        when 'lista' # ruby estados.rb lista
+            Estado.listar_estados.each do |estado|
+                puts "ID: #{estado.id}, Nome: #{estado.nome}, Sigla: #{estado.sigla}"
+            end
+        when 'atualiza' # ruby estados.rb atualiza 1 "Rio de Janeiro"
+            Estado.atualizar_estado(param.to_i, {nome: ARGV[2]})
+        when 'deleta' # ruby estados.rb deleta 1
+            Estado.deletar_estado(param.to_i)
+        # quando for vazio, não faz nada
+        when nil
 
-    else
-        puts "Comando desconhecido: #{command}"
+        else
+            puts "Comando desconhecido: #{command}"
+    end
 end
