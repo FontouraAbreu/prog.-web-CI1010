@@ -13,7 +13,7 @@ Criar e usar um banco de dados utilizando ActiveRecord.
 Temos as entidades `Pessoa`, `Estado`, `Municipio`, `Documento` e `Esporte`.
 A relação entre as entidades pode ser vista o seguinte diagrama:
 
-[Diagram de Entidades](./Diagrama_Entidade.jpg)
+![Diagram de Entidades](./Diagrama_Entidade.jpg)
 
 ## Execução
 
