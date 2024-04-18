@@ -1,5 +1,6 @@
 $:.push './'
 require 'active_record'
+require 'pessoa.rb'
 
 ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'Tabelas.sqlite3')
 
@@ -39,19 +40,26 @@ if __FILE__ == $0
 # Process command line arguments
 command = ARGV[0]
 if ARGV[1] != nil
-    param = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
+    params = ARGV[1..-1].map { |arg| arg.split('=') }.to_h
 end
 
     case command
         when 'cria' # ruby esportes.rb cria "Futebol"
             nome = param['nome'] || 'n/a'
             Esporte.criar_esporte({nome: nome})
+            puts "Esporte criado com sucesso!"
         when 'lista' # ruby esportes.rb lista
             Esporte.listar_esportes.each do |esporte|
                 puts "ID: #{esporte&.id}, Nome: #{esporte&.nome}"
             end
-        when 'altera' # ruby esportes.rb atualiza 1 "Futebol"
-            Esporte.atualizar_esporte(params)
+        when 'atualiza' # ruby esportes.rb atualiza 1 "Futebol"
+            esporte = Esporte.find_by(id: params['id'])
+            if esporte.nil?
+                puts "Esporte não encontrado"
+                return
+            end
+            nome = params['nome'] || esporte.nome
+            Esporte.atualizar_esporte({id: params['id'], nome: nome})
         when 'deleta'
             Esporte.deletar_esporte(params['id'])
         when 'help'

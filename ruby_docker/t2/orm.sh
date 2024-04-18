@@ -28,7 +28,9 @@ fi
 # Check if the number of arguments is correct
 if [ "$#" -lt 2 ]; then
     echo "Invalid number of arguments."
-    echo "Usage: $0 <operation> <table> {<key>=<value> ... <key>=<value>}"
+    echo "Usage: $0 <operation> <table> {<key>=<value> ... <key>=<value}"
+    echo "Valid tables: estados, municipios, esportes, documentos, pessoas"
+    echo "For more information, run: $0 help <table>"
     exit 1
 fi
 
@@ -39,13 +41,16 @@ function callRubyScript {
             ruby $1.rb cria $params
             ;;
         "altera")
-            ruby $1.rb altera $params
+            ruby $1.rb atualiza $params
             ;;
         "lista")
             ruby $1.rb lista
             ;;
         "deleta")
-            ruby $1.rb deleta $TABLE $2
+            ruby $1.rb deleta $params
+            ;;
+        "help")
+            ruby $1.rb help
             ;;
     esac
 }
@@ -53,12 +58,10 @@ function callRubyScript {
 # Check if the table is valid
 OPERATION=$1
 TABLE=$2
-# extract the nth key=value pairs
+# extract the every key=value pairs
+params=""
 for i in $(seq 3 $#); do
-    key=$(echo ${!i} | cut -d= -f1)
-    value=$(echo ${!i} | cut -d= -f2)
-    # adding the key and value to and array of parameters
-    params[$i-3]="$key=$value"
+    params="$params ${!i}"
 done
 
 case $TABLE in
@@ -80,17 +83,21 @@ case $TABLE in
     *)
         echo "Invalid table name."
         echo "Usage: $0 <operation> <table> {<key>=<value> ... <key>=<value}"
+        echo "Valid tables: estados, municipios, esportes, documentos, pessoas"
+        echo "For more information, run: $0 help <table>"
         exit 1
         ;;
 esac
 
 # Check if the operation is valid
 case $OPERATION in
-    "cria"|"altera"|"lista"|"deleta")
+    "cria"|"altera"|"lista"|"deleta"|"help")
         ;;
     *)
         echo "Invalid operation."
         echo "Usage: $0 <operation> <table> {<key>=<value> ... <key>=<value}"
+        echo "Valid tables: estados, municipios, esportes, documentos, pessoas"
+        echo "For more information, run: $0 help <table>"
         exit 1
         ;;
 esac

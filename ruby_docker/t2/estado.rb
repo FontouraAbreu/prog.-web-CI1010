@@ -1,4 +1,7 @@
+$:.push './'
 require 'active_record'
+require 'pessoa.rb'
+require 'municipio.rb'
 
 ActiveRecord::Base.establish_connection:adapter => 'sqlite3', :database => 'Tabelas.sqlite3'
 
@@ -25,19 +28,19 @@ class Estado < ActiveRecord::Base
     end
 
     # Delete
-    def self.deletar_estado(codigo_uf)
-        estado = self.find(codigo_uf)
+    def self.deletar_estado(estado)
+        sigla = estado.sigla
         # Update pessoas
-        pessoas = Pessoa.find_by(codigo_uf: codigo_uf)
+        pessoas = Pessoa.all
+        pessoas = pessoas.where(estado: estado)
         pessoas.each do |pessoa|
-            pessoa.estado = nil
-            pessoa.save
+            pessoa.update(estado: nil)
         end
         # Update municipios
-        municipios = Municipio.find_by(codigo_uf: codigo_uf)
+        municipios = Municipio.all
+        municipios = municipios.where(estado: estado)
         municipios.each do |municipio|
-            municipio.estado = nil
-            municipio.save
+            municipio.update(estado: nil)
         end
         estado.destroy
     end
@@ -57,14 +60,32 @@ end
             codigo_uf = params['codigo_uf'] || 'n/a'
 
             Estado.criar_estado({nome: nome, sigla: sigla, codigo_uf: codigo_uf})
+            puts "Estado criado com sucesso!"
+            puts "Nome: #{nome}, Sigla: #{sigla}, Código UF: #{codigo_uf}"
         when 'lista' # ruby estados.rb lista
             Estado.listar_estados.each do |estado|
                 puts "ID: #{estado&.id}, Nome: #{estado&.nome}, Sigla: #{estado&.sigla}, Código UF: #{estado&.codigo_uf}"
             end
         when 'atualiza' # ruby estados.rb atualiza 1 "Rio de Janeiro"
-            Estado.atualizar_estado(params['id'], params)
+            estado = Estado.find_by(id: params['id'])
+
+            if estado.nil?
+                puts "Estado não encontrado"
+                return
+            end
+
+            nome = params['nome'] || estado.nome
+            sigla = params['sigla'] || estado.sigla
+            codigo_uf = params['codigo_uf'] || estado.codigo_uf
+
+            estado.update({nome: nome, sigla: sigla, codigo_uf: codigo_uf})
         when 'deleta' # ruby estados.rb deleta 1
-            Estado.deletar_estado(params['id'])
+            estado = Estado.find_by(id: params['id'])
+            if estado.nil?
+                puts "Estado não encontrado"
+                return
+            end
+            Estado.deletar_estado(estado)
         when 'help' # ruby estados.rb help
             puts 'Atributos: nome, sigla, codigo_uf'
             puts "Comandos disponíveis: cria {atributos}, lista, atualiza {atributos}, deleta"
