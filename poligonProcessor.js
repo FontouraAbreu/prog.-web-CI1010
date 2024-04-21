@@ -39,19 +39,31 @@ drawRandomLine();
 canvas.addEventListener("mousedown", function(e) {
     var x = e.clientX - canvas.getBoundingClientRect().left;
     var y = e.clientY - canvas.getBoundingClientRect().top;
+    
+    // mouse distance to the start of the line
+    mouseDistanceToLinexi = Math.abs(x - line.xi);
+    mouseDistanceToLineyi = Math.abs(y - line.yi);
+    // mouse distance to the end of the line
+    mouseDistanceToLinexf = Math.abs(x - line.xf);
+    mouseDistanceToLineyf = Math.abs(y - line.yf);
+    // mouse distance to the middle of the line
+    mouseDistanceToLinexm = Math.abs(x - (line.xi + line.xf) / 2);
+    mouseDistanceToLineym = Math.abs(y - (line.yi + line.yf) / 2);
 
     // check if the click is close to the start of the line
-    if (Math.abs(x - line.xi) < 10 && Math.abs(y - line.yi) < 10) {
+    if (mouseDistanceToLinexi < 10 && mouseDistanceToLineyi < 10) {
         canvas.addEventListener("mousemove", moveLineStart);
         canvas.addEventListener("mouseup", function() {
             canvas.removeEventListener("mousemove", moveLineStart);
         });
     // check if the click is close to the end of the line
-    } else if (Math.abs(x - line.xf) < 10 && Math.abs(y - line.yf) < 10) {
+    } else if (mouseDistanceToLinexf < 10 && mouseDistanceToLineyf < 10) {
         canvas.addEventListener("mousemove", moveLineEnd);
         canvas.addEventListener("mouseup", function() {
             canvas.removeEventListener("mousemove", moveLineEnd);
         });
+    // check if the click is close to the middle of the line, then move the whole line
+    } else if (mouseDistanceToLinexm < 10 && mouseDistanceToLineym < 10) {
     }
 });
 
