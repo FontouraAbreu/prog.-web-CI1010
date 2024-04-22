@@ -9,6 +9,7 @@ o.innerHTML="<canvas id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeigh
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 let line = {xi: 0, yi: 0, xf: 0, yf: 0};
+let lines = [];
 
 // draw a line in a random position
 function drawRandomLine() {
@@ -30,10 +31,14 @@ function drawRandomLine() {
     line.yi = y;
     line.xf = x + length * Math.cos(angle);
     line.yf = y + length * Math.sin(angle);
+    lines.push(line);
 }
 
 drawRandomLine();
 
+canvas.addEventListener("contextmenu", function(e) {
+    e.preventDefault(); // prevent the default right-click menu from opening
+});
 
 // move the start, middle or end of the line
 canvas.addEventListener("mousedown", function(e) {
@@ -56,16 +61,63 @@ canvas.addEventListener("mousedown", function(e) {
         canvas.addEventListener("mouseup", function() {
             canvas.removeEventListener("mousemove", moveLineStart);
         });
+    }
+    
     // check if the click is close to the end of the line
-    } else if (mouseDistanceToLinexf < 10 && mouseDistanceToLineyf < 10) {
+    if (mouseDistanceToLinexf < 10 && mouseDistanceToLineyf < 10) {
         canvas.addEventListener("mousemove", moveLineEnd);
         canvas.addEventListener("mouseup", function() {
             canvas.removeEventListener("mousemove", moveLineEnd);
         });
+    }
+    
     // check if the click is close to the middle of the line, then move the whole line
-    } else if (mouseDistanceToLinexm < 10 && mouseDistanceToLineym < 10) {
+    if (mouseDistanceToLinexm < 10 && mouseDistanceToLineym < 10) {
+        canvas.addEventListener("mousemove", moveLine);
+        canvas.addEventListener("mouseup", function() {
+            canvas.removeEventListener("mousemove", moveLine);
+        });
+    }
+
+    // check if the right-click happened. If so, break the line and make the two points of the line conect to the mouse position
+    if (e.button == 2) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.moveTo(line.xi, line.yi);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.lineTo(line.xf, line.yf);
+        ctx.stroke();
+        line.xf = x;
+        line.yf = y;
+        lines.push(line);
     }
 });
+
+
+
+// move the whole line
+function moveLine(e) {
+    var x = e.clientX - canvas.getBoundingClientRect().left;
+    var y = e.clientY - canvas.getBoundingClientRect().top;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    // calculate the distance between the original starting and ending points
+    // these distances will be used to update the starting and ending points 
+    var dx = line.xf - line.xi;
+    var dy = line.yf - line.yi;
+    // update starting points
+    line.xi = x - dx / 2;
+    line.yi = y - dy / 2;
+    // update ending points
+    line.xf = x + dx / 2;
+    line.yf = y + dy / 2;
+    ctx.moveTo(line.xi, line.yi);
+    ctx.lineTo(line.xf, line.yf);
+    ctx.stroke();
+}
 
 function moveLineStart(e) {
     var x = e.clientX - canvas.getBoundingClientRect().left;
