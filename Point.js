@@ -23,6 +23,8 @@ class Point extends Coordinate {
         point.addConectedPoint(this);
     }
     drawToPoint(point) {
+        // clear the canvas
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(point.x, point.y);

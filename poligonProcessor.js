@@ -9,7 +9,7 @@ o.innerHTML="<canvas id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeigh
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var shape = new GeometricShape(); // the shape that will be drawn
-var clickCircleRadius = 20; // the radius of the circle that appears when a point is clicked
+var clickCircleRadius = 15; // the radius of the circle that appears when a point is clicked
 
 // draw a line in a random position
 function drawRandomLine() {
@@ -55,74 +55,137 @@ canvas.addEventListener("contextmenu", function(e) {
 
 // move the start, middle or end of the line
 canvas.addEventListener("mousedown", function(e) {
-    // get every point closer than 10px to the mouse click
-    var close_points = [];
-    currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
-    currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
-    for (var i = 0; i < shape.points.length; i++) {
-        var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
-        var distancey = Math.abs(shape.points[i].get_y() - currentMouseY);
-        // if the point is closer than 10px to the mouse click add it to the list
-        if (distancex < clickCircleRadius && distancey < clickCircleRadius) {
-            close_points.push(shape.points[i]);
-        }
-        // check if the current click is in the middle of a line
-        var isMiddle = false;
-        if (i < shape.points.length - 1) {
-            var point1 = shape.points[i];
-            var point2 = shape.points[i + 1];
-            var midpointX = (point1.get_x() + point2.get_x()) / 2;
-            var midpointY = (point1.get_y() + point2.get_y()) / 2;
-            var deltaX = midpointX - currentMouseX;
-            var deltaY = midpointY - currentMouseY;
-            if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
-                isMiddle = true;
-                console.log("middle");
+    if (e.button == 0) {
+        console.log("left click");
+        // get every point closer than 10px to the mouse click
+        var close_points = [];
+        currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
+        currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        for (var i = 0; i < shape.points.length; i++) {
+            var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
+            var distancey = Math.abs(shape.points[i].get_y() - currentMouseY);
+            // if the point is closer than 10px to the mouse click add it to the list
+            if (distancex < clickCircleRadius && distancey < clickCircleRadius) {
+                close_points.push(shape.points[i]);
+            }
+            // check if the current click is in the middle of a line
+            var isMiddle = false;
+            if (i < shape.points.length - 1) {
+                var point1 = shape.points[i];
+                var point2 = shape.points[i + 1];
+                var midpointX = (point1.get_x() + point2.get_x()) / 2;
+                var midpointY = (point1.get_y() + point2.get_y()) / 2;
+                var deltaX = midpointX - currentMouseX;
+                var deltaY = midpointY - currentMouseY;
+                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
+                    isMiddle = true;
+                }
+            }
+            if (isMiddle) {
+                close_points.push(point1);
+                close_points.push(point2);
             }
         }
-        if (isMiddle) {
-            close_points.push(point1);
-            close_points.push(point2);
+
+        // if there is a point close to the mouse click move it until the click is released
+        while (close_points.length == 1) {
+            var point = close_points.pop();
+            var mouseMove = function(e) {
+                movePoint(e, point);
+            };
+            var mouseUp = function(e) {
+                canvas.removeEventListener("mousemove", mouseMove);
+                canvas.removeEventListener("mouseup", mouseUp);
+            };
+            canvas.addEventListener("mousemove", mouseMove);
+            canvas.addEventListener("mouseup", mouseUp);
+        }
+        // check if the clicked point is in the middle of a line
+        while (close_points.length == 2) {
+            var point1 = close_points.pop();
+            var point2 = close_points.pop();
+            var mouseMove = function(e) {
+                moveLine(e, point1, point2);
+            };
+            var mouseUp = function(e) {
+                canvas.removeEventListener("mousemove", mouseMove);
+                canvas.removeEventListener("mouseup", mouseUp);
+            };
+            canvas.addEventListener("mousemove", mouseMove);
+            canvas.addEventListener("mouseup", mouseUp);
+        }
+    }
+
+    if (e.button == 2) {
+        console.log("right click");
+        var currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
+        var currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        var close_points = [];
+        for (var i = 0; i < shape.points.length; i++) {
+            var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
+            var distancey = Math.abs(shape.points[i].get_y() - currentMouseY);
+            // if the point is closer than 10px to the mouse click add it to the list
+            if (distancex < clickCircleRadius && distancey < clickCircleRadius) {
+                close_points.push(shape.points[i]);
+            }
+            // check if the current click is in the inside a line
+            var isBetween = false;
+            if (i < shape.points.length - 1) {
+                var point1 = shape.points[i];
+                var point2 = shape.points[i + 1];
+                var midpointX = (point1.get_x() + point2.get_x()) / 2;
+                var midpointY = (point1.get_y() + point2.get_y()) / 2;
+                var deltaX = midpointX - currentMouseX;
+                var deltaY = midpointY - currentMouseY;
+                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
+                    isBetween = true;
+                }
+            }
+
+            if (isBetween) {
+                close_points.push(point1);
+                close_points.push(point2);
+            }
         }
 
+        // if there are two points close to the mouse click divide the line in two
+        while (close_points.length == 2) {
+            var point1 = close_points.pop();
+            var point2 = close_points.pop();
+            // poit where the line will be divided
+            var midpointX = (point1.get_x() + point2.get_x()) / 2;
+            var midpointY = (point1.get_y() + point2.get_y()) / 2;
 
-    }
-    console.log(close_points);
-    // console.log(close_points);
-    // if there is a point close to the mouse click move it until the click is released
-    while (close_points.length == 1) {
-        var point = close_points.pop();
-        var mouseMove = function(e) {
-            movePoint(e, point);
-        };
-        var mouseUp = function(e) {
-            canvas.removeEventListener("mousemove", mouseMove);
-            canvas.removeEventListener("mouseup", mouseUp);
-        };
-        canvas.addEventListener("mousemove", mouseMove);
-        canvas.addEventListener("mouseup", mouseUp);
-    }
-    // check if the clicked point is in the middle of a line
-    while (close_points.length == 2) {
-        var point1 = close_points.pop();
-        var point2 = close_points.pop();
-        var mouseMove = function(e) {
-            moveLine(e, point1, point2);
-        };
-        var mouseUp = function(e) {
-            canvas.removeEventListener("mousemove", mouseMove);
-            canvas.removeEventListener("mouseup", mouseUp);
-        };
-        canvas.addEventListener("mousemove", mouseMove);
-        canvas.addEventListener("mouseup", mouseUp);
+            var newPoint = new Point(midpointX, midpointY);
+
+            // remove the connection between the two points
+            
+            console.log("point1 connected points: ", point1.getConectedPoints());
+            point1.removeConectedPoint(point2);
+            console.log("point1 connected points: ", point1.getConectedPoints());
+            
+            console.log("point2 connected points: ", point2.getConectedPoints());            
+            point2.removeConectedPoint(point1);
+            console.log("point2 connected points: ", point2.getConectedPoints());
+
+            newPoint.connectToPoint(point1);
+            newPoint.connectToPoint(point2);
+            // add the new point in between the two points
+            shape.AddPoint(newPoint, shape.points.indexOf(point1) + 1);
+
+            shape.Draw();
+            
+        }
     }
 });
+
+
 
 function movePoint(e, point) {
     point.set_x(e.clientX - canvas.getBoundingClientRect().left);
     point.set_y(e.clientY - canvas.getBoundingClientRect().top);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shape.Draw(point);
+    shape.Draw();
 }
 
 function moveLine(e, point1, point2) {
@@ -133,5 +196,5 @@ function moveLine(e, point1, point2) {
     point2.set_x(point2.get_x() + deltaX);
     point2.set_y(point2.get_y() + deltaY);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    shape.Draw(point1);
+    shape.Draw();
 }
