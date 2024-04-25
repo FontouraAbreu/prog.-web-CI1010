@@ -67,10 +67,12 @@ canvas.addEventListener("mousedown", function(e) {
             // if the point is closer than 10px to the mouse click add it to the list
             if (distancex < clickCircleRadius && distancey < clickCircleRadius) {
                 close_points.push(shape.points[i]);
+                console.log("point clicked: ", shape.points[i], " at index ", i);
             }
             // check if the current click is in the middle of a line
             var isMiddle = false;
             if (i < shape.points.length - 1) {
+                console.log("checking if points ", i, " and ", i + 1, " are in the middle of the line");
                 var point1 = shape.points[i];
                 var point2 = shape.points[i + 1];
                 var midpointX = (point1.get_x() + point2.get_x()) / 2;
@@ -82,37 +84,40 @@ canvas.addEventListener("mousedown", function(e) {
                 }
             }
             if (isMiddle) {
-                close_points.push(point1);
-                close_points.push(point2);
+                console.log("middle of the line");
+                close_points.push(point1, point2);
             }
-        }
-
-        // if there is a point close to the mouse click move it until the click is released
-        while (close_points.length == 1) {
-            var point = close_points.pop();
-            var mouseMove = function(e) {
-                movePoint(e, point);
-            };
-            var mouseUp = function(e) {
-                canvas.removeEventListener("mousemove", mouseMove);
-                canvas.removeEventListener("mouseup", mouseUp);
-            };
-            canvas.addEventListener("mousemove", mouseMove);
-            canvas.addEventListener("mouseup", mouseUp);
-        }
-        // check if the clicked point is in the middle of a line
-        while (close_points.length == 2) {
-            var point1 = close_points.pop();
-            var point2 = close_points.pop();
-            var mouseMove = function(e) {
-                moveLine(e, point1, point2);
-            };
-            var mouseUp = function(e) {
-                canvas.removeEventListener("mousemove", mouseMove);
-                canvas.removeEventListener("mouseup", mouseUp);
-            };
-            canvas.addEventListener("mousemove", mouseMove);
-            canvas.addEventListener("mouseup", mouseUp);
+            console.log("close points: ", close_points);
+            
+            // if there is a point close to the mouse click move it until the click is released
+            while (close_points.length == 1) {
+                var point = close_points.pop();
+                var mouseMove = function(e) {
+                    movePoint(e, point);
+                };
+                var mouseUp = function(e) {
+                    canvas.removeEventListener("mousemove", mouseMove);
+                    canvas.removeEventListener("mouseup", mouseUp);
+                };
+                canvas.addEventListener("mousemove", mouseMove);
+                canvas.addEventListener("mouseup", mouseUp);
+            }
+            // check if the clicked point is in the middle of a line
+            while (close_points.length == 2) {
+                var point1 = close_points.pop();
+                var point2 = close_points.pop();
+                console.log("point1: ", point1);
+                console.log("point2: ", point2);
+                var mouseMove = function(e) {
+                    moveLine(e, point1, point2);
+                };
+                var mouseUp = function(e) {
+                    canvas.removeEventListener("mousemove", mouseMove);
+                    canvas.removeEventListener("mouseup", mouseUp);
+                };
+                canvas.addEventListener("mousemove", mouseMove);
+                canvas.addEventListener("mouseup", mouseUp);
+            }
         }
     }
 
@@ -171,7 +176,9 @@ canvas.addEventListener("mousedown", function(e) {
             newPoint.connectToPoint(point1);
             newPoint.connectToPoint(point2);
             // add the new point in between the two points
-            shape.AddPoint(newPoint, shape.points.indexOf(point1) + 1);
+            shape.AddPoint(newPoint, shape.points.indexOf(point1));
+
+            console.log(shape.points);
 
             shape.Draw();
             
