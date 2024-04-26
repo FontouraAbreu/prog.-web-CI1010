@@ -1,9 +1,14 @@
 // make sure the canvas is full screen and responsive
 var asideWidth = document.getElementsByTagName("aside")[0].offsetWidth;
 var CanvasWidth=screen.availWidth-asideWidth;
-var CanvasHeight=screen.availHeight;
+// canvas height should be at max the container height
+var containerHeight = document.getElementsByClassName("section")[0].offsetHeight;
+var CanvasHeight= containerHeight;
 var o=window.document.getElementById("canvas");
-o.innerHTML="<canvas id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeight+"'></canvas>";
+o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeight+"'></canvas>";
+// button to input a number beetwen 3-8 to generate a new geometric shape of that size
+o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3'>";
+o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Shape</button>";
 
 // Get the canvas element
 var canvas = document.getElementById("myCanvas");
@@ -186,7 +191,8 @@ canvas.addEventListener("mousedown", function(e) {
     }
 });
 
-
+// if the button is clicked draw a new random shape
+document.getElementById("generateShape").addEventListener("click", drawRandomShape);
 
 function movePoint(e, point) {
     point.set_x(e.clientX - canvas.getBoundingClientRect().left);
@@ -204,5 +210,49 @@ function moveLine(e, point1, point2) {
     point2.set_x(point2.get_x() + deltaX);
     point2.set_y(point2.get_y() + deltaY);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    shape.Draw();
+}
+
+function drawRandomShape() {
+    var numberOfPoints = document.getElementById("inputNumber").value;
+    // clear the points
+    shape.points = [];
+
+    // generate the number of points specified by the user
+    for (let i = 0; i < numberOfPoints; i++) {
+        var xi = Math.random() * canvas.width;
+        var yi = Math.random() * canvas.height;
+        
+        // if its too close to the border generate a new point
+        while (xi < clickCircleRadius || xi > canvas.width - clickCircleRadius || yi < clickCircleRadius || yi > canvas.height - clickCircleRadius) {
+            xi = Math.random() * canvas.width;
+            yi = Math.random() * canvas.height;
+        }
+
+        // if a point is too close to another point generate a new one
+        for (let j = 0; j < shape.points.length; j++) {
+            var xj = shape.points[j].get_x();
+            var yj = shape.points[j].get_y();
+            var distance = Math.sqrt(Math.pow(xi - xj, 2) + Math.pow(yi - yj, 2));
+            // if the distance is less than 3 times the radius of the circle generate a new point
+            while (distance < clickCircleRadius*3) {
+                xi = Math.random() * canvas.width;
+                yi = Math.random() * canvas.height;
+                distance = Math.sqrt(Math.pow(xi - xj, 2) + Math.pow(yi - yj, 2));
+            }
+        }
+        point = new Point(xi, yi);
+        shape.AddPoint(point);
+    }
+
+    // change the order of the point to avoid crossing lines
+    shape.points = shape.points.sort((a, b) => a.get_x() - b.get_x());
+    
+    // connect the points in a circle
+    for (let i = 0; i < shape.points.length - 1; i++) {
+        shape.points[i].connectToPoint(shape.points[i + 1]);
+    }
+    shape.points[shape.points.length - 1].connectToPoint(shape.points[0]);
+    console.log(shape.points);
     shape.Draw();
 }
