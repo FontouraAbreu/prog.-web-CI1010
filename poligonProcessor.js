@@ -89,35 +89,35 @@ canvas.addEventListener("mousedown", function(e) {
             }
             console.log("close points: ", close_points);
             
-            // if there is a point close to the mouse click move it until the click is released
-            while (close_points.length == 1) {
-                var point = close_points.pop();
-                var mouseMove = function(e) {
-                    movePoint(e, point);
-                };
-                var mouseUp = function(e) {
-                    canvas.removeEventListener("mousemove", mouseMove);
-                    canvas.removeEventListener("mouseup", mouseUp);
-                };
-                canvas.addEventListener("mousemove", mouseMove);
-                canvas.addEventListener("mouseup", mouseUp);
-            }
-            // check if the clicked point is in the middle of a line
-            while (close_points.length == 2) {
-                var point1 = close_points.pop();
-                var point2 = close_points.pop();
-                console.log("point1: ", point1);
-                console.log("point2: ", point2);
-                var mouseMove = function(e) {
-                    moveLine(e, point1, point2);
-                };
-                var mouseUp = function(e) {
-                    canvas.removeEventListener("mousemove", mouseMove);
-                    canvas.removeEventListener("mouseup", mouseUp);
-                };
-                canvas.addEventListener("mousemove", mouseMove);
-                canvas.addEventListener("mouseup", mouseUp);
-            }
+        }
+        // if there is a point close to the mouse click move it until the click is released
+        while (close_points.length == 1) {
+            var point = close_points.pop();
+            var mouseMove = function(e) {
+                movePoint(e, point);
+            };
+            var mouseUp = function(e) {
+                canvas.removeEventListener("mousemove", mouseMove);
+                canvas.removeEventListener("mouseup", mouseUp);
+            };
+            canvas.addEventListener("mousemove", mouseMove);
+            canvas.addEventListener("mouseup", mouseUp);
+        }
+        // check if the clicked point is in the middle of a line
+        while (close_points.length == 2) {
+            var point1 = close_points.pop();
+            var point2 = close_points.pop();
+            console.log("point1: ", point1);
+            console.log("point2: ", point2);
+            var mouseMove = function(e) {
+                moveLine(e, point1, point2);
+            };
+            var mouseUp = function(e) {
+                canvas.removeEventListener("mousemove", mouseMove);
+                canvas.removeEventListener("mouseup", mouseUp);
+            };
+            canvas.addEventListener("mousemove", mouseMove);
+            canvas.addEventListener("mouseup", mouseUp);
         }
     }
 
@@ -200,6 +200,7 @@ function moveLine(e, point1, point2) {
     var deltaY = e.clientY - canvas.getBoundingClientRect().top - (point1.get_y() + point2.get_y()) / 2;
     point1.set_x(point1.get_x() + deltaX);
     point1.set_y(point1.get_y() + deltaY);
+
     point2.set_x(point2.get_x() + deltaX);
     point2.set_y(point2.get_y() + deltaY);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
