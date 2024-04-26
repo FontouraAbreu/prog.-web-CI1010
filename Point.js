@@ -22,12 +22,17 @@ class Point extends Coordinate {
         this.addConectedPoint(point);
         point.addConectedPoint(this);
     }
+    // draw a line between this point and the specified point
     drawToPoint(point) {
-        // clear the canvas
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // draw a red dot with a smaller black dot in the center of the point
         ctx.beginPath();
+        ctx.arc(this.x, this.y, 2, 0, 2 * Math.PI); // black dot
+        ctx.fillStyle = "black";
+        ctx.fill();
+
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(point.x, point.y);
+
         ctx.stroke();
     }
 }
