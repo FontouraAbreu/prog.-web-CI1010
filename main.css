@@ -40,6 +40,16 @@ table {
 	border-spacing: 0;
 }
 
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 /*-----------------------------------------------------------------*/
 
 body {
@@ -345,6 +355,37 @@ article {
     
     /* CANVA */
     /* -------------------------------------------------------------------------- */
+    /* canvas */
+    .polygonCanvas {
+        display: flex;
+    }
+
+    /* an input field for the polygon */
+    .polygonInput {
+        width: 5%;
+        height: 10px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        /* set it to the top */
+        position: absolute;
+        top: 0;
+        left: 14%;
+    }
+
+    .polygonButton {
+        width: 7%;
+        height: 40px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        /* set it to the top */
+        position: absolute;
+        top: 35px;
+        left: 13.7%;
+    }
 
     /* ASIDE */
     /* -------------------------------------------------------------------------- */
