@@ -9,6 +9,14 @@ o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"'
 // button to input a number beetwen 3-8 to generate a new geometric shape of that size
 o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3'>";
 o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Shape</button>";
+/*
+// add a help button to highlight the middle of the lines
+o.innerHTML+="<button class='helpButton' id='helpButton'>Help</button>";
+// add a help text
+o.innerHTML+="<p class='helpText' id='helpText'>Right click at the middle of a line to divide it in two</p>";
+// add a help text
+o.innerHTML+="<p class='helpText' id='helpText'>Left click and drag a point to move it</p>";
+*/
 
 // Get the canvas element
 var canvas = document.getElementById("myCanvas");
@@ -48,6 +56,7 @@ function drawRandomLine() {
     pointi.connectToPoint(pointf);
     pointi.drawToPoint(pointf);
     pointf.connectToPoint(pointi);
+    pointf.drawToPoint(pointi);
     shape.AddPoint(pointi);
     shape.AddPoint(pointf);
 }
@@ -193,6 +202,9 @@ canvas.addEventListener("mousedown", function(e) {
 
 // if the button is clicked draw a new random shape
 document.getElementById("generateShape").addEventListener("click", drawRandomShape);
+
+// if the help button is clicked show the help text
+document.getElementById("helpButton").addEventListener("click", showHelp);
 
 function movePoint(e, point) {
     point.set_x(e.clientX - canvas.getBoundingClientRect().left);
