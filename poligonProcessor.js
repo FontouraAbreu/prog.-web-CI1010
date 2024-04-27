@@ -9,14 +9,10 @@ o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"'
 // button to input a number beetwen 3-8 to generate a new geometric shape of that size
 o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3'>";
 o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Shape</button>";
-/*
 // add a help button to highlight the middle of the lines
 o.innerHTML+="<button class='helpButton' id='helpButton'>Help</button>";
 // add a help text
-o.innerHTML+="<p class='helpText' id='helpText'>Right click at the middle of a line to divide it in two</p>";
-// add a help text
-o.innerHTML+="<p class='helpText' id='helpText'>Left click and drag a point to move it</p>";
-*/
+o.innerHTML+="<p class='helpText' id='helpText' style='display:none;'><strong>Right click</strong> at the middle of a line to divide it in two<br><strong>Left click</strong> and drag a point or middle of the line to move it</p>";
 
 // Get the canvas element
 var canvas = document.getElementById("myCanvas");
@@ -89,6 +85,19 @@ canvas.addEventListener("mousedown", function(e) {
                 console.log("checking if points ", i, " and ", i + 1, " are in the middle of the line");
                 var point1 = shape.points[i];
                 var point2 = shape.points[i + 1];
+                var midpointX = (point1.get_x() + point2.get_x()) / 2;
+                var midpointY = (point1.get_y() + point2.get_y()) / 2;
+                var deltaX = midpointX - currentMouseX;
+                var deltaY = midpointY - currentMouseY;
+                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
+                    isMiddle = true;
+                }
+            }
+            // check if the last and first point are in the middle of the line
+            if (i == shape.points.length - 1) {
+                console.log("checking if points ", i, " and ", 0, " are in the middle of the line");
+                var point1 = shape.points[i];
+                var point2 = shape.points[0];
                 var midpointX = (point1.get_x() + point2.get_x()) / 2;
                 var midpointY = (point1.get_y() + point2.get_y()) / 2;
                 var deltaX = midpointX - currentMouseX;
@@ -206,6 +215,15 @@ document.getElementById("generateShape").addEventListener("click", drawRandomSha
 // if the help button is clicked show the help text
 document.getElementById("helpButton").addEventListener("click", showHelp);
 
+function showHelp() {
+    var helpText = document.getElementById("helpText");
+    if (helpText.style.display == "none") {
+        helpText.style.display = "block";
+    }
+    else {
+        helpText.style.display = "none";
+    }
+}
 function movePoint(e, point) {
     point.set_x(e.clientX - canvas.getBoundingClientRect().left);
     point.set_y(e.clientY - canvas.getBoundingClientRect().top);
