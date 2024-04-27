@@ -386,6 +386,32 @@ article {
         top: 35px;
         left: 13.7%;
     }
+    
+    .helpButton {
+        width: 7%;
+        height: 40px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        /* set it to the top */
+        position: absolute;
+        top: 35px;
+        right: 5%;
+    }
+
+    .helpText {
+        width: 20%;
+        height: 75px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        /* set it to the top */
+        position: absolute;
+        top: 80px;
+        right: 5%;
+    }
 
     /* ASIDE */
     /* -------------------------------------------------------------------------- */
