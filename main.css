@@ -375,10 +375,9 @@ article {
     }
 
     .polygonButton {
-        width: 7%;
+        width: 9%;
         height: 40px;
         margin: 10px 0;
-        padding: 10px;
         border-radius: 5px;
         border: 1px solid #333;
         /* set it to the top */
@@ -401,10 +400,10 @@ article {
     }
 
     .helpText {
-        width: 20%;
-        height: 75px;
+        width: 25%;
+        height: 125px;
         margin: 10px 0;
-        padding: 10px;
+        padding: 10px 2px 10px 10px;
         border-radius: 5px;
         border: 1px solid #333;
         /* set it to the top */
