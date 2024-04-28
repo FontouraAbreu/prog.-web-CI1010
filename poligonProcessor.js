@@ -94,7 +94,7 @@ canvas.addEventListener("mousedown", function(e) {
                 }
             }
             // check if the last and first point are in the middle of the line
-            if (i == shape.points.length - 1) {
+            if (i == shape.points.length - 1 && shape.points.length > 2) {
                 console.log("checking if points ", i, " and ", 0, " are in the middle of the line");
                 var point1 = shape.points[i];
                 var point2 = shape.points[0];
@@ -104,6 +104,7 @@ canvas.addEventListener("mousedown", function(e) {
                 var deltaY = midpointY - currentMouseY;
                 if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
                     isMiddle = true;
+                    console.log("middle point are: ", midpointX, midpointY);
                 }
             }
             if (isMiddle) {
@@ -169,6 +170,19 @@ canvas.addEventListener("mousedown", function(e) {
                     isBetween = true;
                 }
             }
+            // check if the last and first point are in the middle of the line
+            if (i == shape.points.length - 1 && shape.points.length > 2) {
+                var point1 = shape.points[i];
+                var point2 = shape.points[0];
+                var midpointX = (point1.get_x() + point2.get_x()) / 2;
+                var midpointY = (point1.get_y() + point2.get_y()) / 2;
+                var deltaX = midpointX - currentMouseX;
+                var deltaY = midpointY - currentMouseY;
+                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
+                    isBetween = true;
+                }
+            }
+
 
             if (isBetween) {
                 close_points.push(point1);
