@@ -7,12 +7,12 @@ var CanvasHeight= containerHeight;
 var o=window.document.getElementById("canvas");
 o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeight+"'></canvas>";
 // button to input a number beetwen 3-8 to generate a new geometric shape of that size
-o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3'>";
-o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Shape</button>";
+o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3' placeholder='# of lines'>";
+o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Polygon</button>";
 // add a help button to highlight the middle of the lines
 o.innerHTML+="<button class='helpButton' id='helpButton'>Help</button>";
 // add a help text
-o.innerHTML+="<p class='helpText' id='helpText' style='display:none;'><strong>Right click</strong> at the middle of a line to divide it in two<br><strong>Left click</strong> and drag a point or middle of the line to move it</p>";
+o.innerHTML+="<p class='helpText' id='helpText' style='display:none;'><strong>Right click</strong> at the middle of a line (red dot) to divide it in two <br><br> <strong>Left click</strong> and drag a point or middle of the line to move it</p>";
 
 // Get the canvas element
 var canvas = document.getElementById("myCanvas");
