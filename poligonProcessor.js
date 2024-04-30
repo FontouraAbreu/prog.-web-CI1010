@@ -7,7 +7,7 @@ var CanvasHeight= containerHeight;
 var o=window.document.getElementById("canvas");
 o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeight+"'></canvas>";
 // button to input a number beetwen 3-8 to generate a new geometric shape of that size
-o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' value='3' placeholder='# of lines'>";
+o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' placeholder='# of lines'>";
 o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Polygon</button>";
 // add a help button to highlight the middle of the lines
 o.innerHTML+="<button class='helpButton' id='helpButton'>Help</button>";
@@ -255,6 +255,11 @@ function moveLine(e, point1, point2) {
 
 function drawRandomShape() {
     var numberOfPoints = document.getElementById("inputNumber").value;
+    // check if the number of points is a number and is between 3 and 8
+    if (isNaN(numberOfPoints) || numberOfPoints < 3 || numberOfPoints > 8) {
+        alert("Please enter a number between 3 and 8");
+        return;
+    }
     // clear the points
     shape.points = [];
 
