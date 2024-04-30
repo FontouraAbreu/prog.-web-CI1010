@@ -33,21 +33,17 @@ function drawRandomLine() {
     var yf = yi + length * Math.sin(angle);
     pointf = new Point(xf, yf);
     // making sure the whole line is inside the canvas
-    if (xf > canvas.width) {
-        xf = canvas.width;
-        xi = xf - length * Math.cos(angle);
+    var xLimit = canvas.width - clickCircleRadius;
+    var yLimit = canvas.height - clickCircleRadius;
+    while (pointi.get_x() < clickCircleRadius || pointi.get_x() > xLimit || pointi.get_y() < clickCircleRadius || pointi.get_y() > yLimit) {
+        xi = Math.random() * canvas.width;
+        yi = Math.random() * canvas.height;
+        pointi = new Point(xi, yi);
     }
-    if (yf > canvas.height) {
-        yf = canvas.height;
-        yi = yf - length * Math.sin(angle);
-    }
-    if (xi < 0) {
-        xi = 0;
-        xf = xi + length * Math.cos(angle);
-    }
-    if (yi < 0) {
-        yi = 0;
-        yf = yi + length * Math.sin(angle);
+    while (pointf.get_x() < clickCircleRadius || pointf.get_x() > xLimit || pointf.get_y() < clickCircleRadius || pointf.get_y() > yLimit) {
+        xf = Math.random() * canvas.width;
+        yf = Math.random() * canvas.height;
+        pointf = new Point(xf, yf);
     }
     pointi.connectToPoint(pointf);
     pointi.drawToPoint(pointf);
@@ -94,7 +90,7 @@ canvas.addEventListener("mousedown", function(e) {
                 }
             }
             // check if the last and first point are in the middle of the line
-            if (i == shape.points.length - 1 && shape.points.length > 2) {
+            if (i == shape.points.length - 1 && shape.points.length > 2 && close_points.length == 0) {
                 console.log("checking if points ", i, " and ", 0, " are in the middle of the line");
                 var point1 = shape.points[i];
                 var point2 = shape.points[0];
@@ -104,7 +100,7 @@ canvas.addEventListener("mousedown", function(e) {
                 var deltaY = midpointY - currentMouseY;
                 if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
                     isMiddle = true;
-                    console.log("middle point are: ", midpointX, midpointY);
+                    console.log("middle point is: ", midpointX, midpointY);
                 }
             }
             if (isMiddle) {
