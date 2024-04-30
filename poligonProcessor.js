@@ -60,13 +60,23 @@ canvas.addEventListener("contextmenu", function(e) {
 });
 
 // move the start, middle or end of the line
-canvas.addEventListener("mousedown", function(e) {
+canvas.addEventListener("mousedown", manageMouseClicksAndMoves);
+    
+
+
+function manageMouseClicksAndMoves(e) {
     if (e.button == 0) {
         console.log("left click");
         // get every point closer than 10px to the mouse click
         var close_points = [];
-        currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
-        currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        // Check if event is from a mouse or touch
+        if (e.type === 'touchstart' || e.type === 'touchmove') {
+            currentMouseX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+            currentMouseY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+        } else {
+            currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
+            currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        }
         for (var i = 0; i < shape.points.length; i++) {
             var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
             var distancey = Math.abs(shape.points[i].get_y() - currentMouseY);
@@ -143,8 +153,14 @@ canvas.addEventListener("mousedown", function(e) {
 
     if (e.button == 2) {
         console.log("right click");
-        var currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
-        var currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        // Check if event is from a mouse or touch
+        if (e.type === 'touchstart' || e.type === 'touchmove') {
+            currentMouseX = e.touches[0].clientX - canvas.getBoundingClientRect().left;
+            currentMouseY = e.touches[0].clientY - canvas.getBoundingClientRect().top;
+        } else {
+            currentMouseX = e.clientX - canvas.getBoundingClientRect().left;
+            currentMouseY = e.clientY - canvas.getBoundingClientRect().top;
+        }
         var close_points = [];
         for (var i = 0; i < shape.points.length; i++) {
             var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
@@ -217,7 +233,7 @@ canvas.addEventListener("mousedown", function(e) {
             
         }
     }
-});
+}
 
 // if the button is clicked draw a new random shape
 document.getElementById("generateShape").addEventListener("click", drawRandomShape);
