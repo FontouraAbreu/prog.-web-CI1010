@@ -28,7 +28,7 @@ o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Polygon<
 // add a help button to highlight the middle of the lines
 o.innerHTML+="<button class='helpButton' id='helpButton'>Help</button>";
 // add a help text
-o.innerHTML+="<p class='helpText' id='helpText' style='display:none;'><strong>Right click</strong> at the middle of a line (red dot) to divide it in two <br><br> <strong>Left click</strong> and drag a point or middle of the line to move it</p>";
+o.innerHTML+="<p class='helpText' id='helpText' style='display:none;'><strong>Right click</strong> anywhere in the line to divide it in two <br><br> <strong>Left click</strong> and drag a point or middle of the line to move it</p>";
 
 // Get the canvas element
 var canvas = document.getElementById("myCanvas");
@@ -180,34 +180,53 @@ function manageMouseClicksAndMoves(e) {
         }
         var close_points = [];
         for (var i = 0; i < shape.points.length; i++) {
-            var distancex = Math.abs(shape.points[i].get_x() - currentMouseX);
-            var distancey = Math.abs(shape.points[i].get_y() - currentMouseY);
-            // if the point is closer than 10px to the mouse click add it to the list
-            if (distancex < clickCircleRadius && distancey < clickCircleRadius) {
-                close_points.push(shape.points[i]);
-            }
             // check if the current click is in the inside a line
             var isBetween = false;
+            // checking if the current click is anywhere in the line
             if (i < shape.points.length - 1) {
-                var point1 = shape.points[i];
-                var point2 = shape.points[i + 1];
-                var midpointX = (point1.get_x() + point2.get_x()) / 2;
-                var midpointY = (point1.get_y() + point2.get_y()) / 2;
-                var deltaX = midpointX - currentMouseX;
-                var deltaY = midpointY - currentMouseY;
-                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
-                    isBetween = true;
+                // check if the current click is in the inside a line
+                var isBetween = false;
+                // checking if the current click is anywhere in the line
+                if (i < shape.points.length - 1) {
+                    var point1 = shape.points[i];
+                    var point2 = shape.points[i + 1];
+                    // calculate the distance between the two points
+                    var deltaX = point2.get_x() - point1.get_x();
+                    var deltaY = point2.get_y() - point1.get_y();
+                    // calculate the distance between the click and each point
+                    var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+                    var distance1 = Math.sqrt(Math.pow(currentMouseX - point1.get_x(), 2) + Math.pow(currentMouseY - point1.get_y(), 2));
+                    var distance2 = Math.sqrt(Math.pow(currentMouseX - point2.get_x(), 2) + Math.pow(currentMouseY - point2.get_y(), 2));
+                    // check if the distance between the two points is approximately equal to the sum of the distances from the click to each point
+                    if (distance1 + distance2 - distance < 0.1) {
+                        isBetween = true;
+                    }
+                }
+                // check if the last and first point are in the middle of the line
+                if (i == shape.points.length - 1 && shape.points.length > 2) {
+                    var point1 = shape.points[i];
+                    var point2 = shape.points[0];
+                    var deltaX = point2.get_x() - point1.get_x();
+                    var deltaY = point2.get_y() - point1.get_y();
+                    var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+                    var distance1 = Math.sqrt(Math.pow(currentMouseX - point1.get_x(), 2) + Math.pow(currentMouseY - point1.get_y(), 2));
+                    var distance2 = Math.sqrt(Math.pow(currentMouseX - point2.get_x(), 2) + Math.pow(currentMouseY - point2.get_y(), 2));
+                    // check if the distance between the two points is approximately equal to the sum of the distances from the click to each point
+                    if (distance1 + distance2 - distance < 0.1) {
+                        isBetween = true;
+                    }
                 }
             }
             // check if the last and first point are in the middle of the line
             if (i == shape.points.length - 1 && shape.points.length > 2) {
                 var point1 = shape.points[i];
                 var point2 = shape.points[0];
-                var midpointX = (point1.get_x() + point2.get_x()) / 2;
-                var midpointY = (point1.get_y() + point2.get_y()) / 2;
-                var deltaX = midpointX - currentMouseX;
-                var deltaY = midpointY - currentMouseY;
-                if (Math.abs(deltaX) < clickCircleRadius && Math.abs(deltaY) < clickCircleRadius){
+                var deltaX = point2.get_x() - point1.get_x();
+                var deltaY = point2.get_y() - point1.get_y();
+                var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+                var distance1 = Math.sqrt(Math.pow(currentMouseX - point1.get_x(), 2) + Math.pow(currentMouseY - point1.get_y(), 2));
+                var distance2 = Math.sqrt(Math.pow(currentMouseX - point2.get_x(), 2) + Math.pow(currentMouseY - point2.get_y(), 2));
+                if (distance1 + distance2 - distance < 0.1) {
                     isBetween = true;
                 }
             }
@@ -224,10 +243,7 @@ function manageMouseClicksAndMoves(e) {
             var point1 = close_points.pop();
             var point2 = close_points.pop();
             // poit where the line will be divided
-            var midpointX = (point1.get_x() + point2.get_x()) / 2;
-            var midpointY = (point1.get_y() + point2.get_y()) / 2;
-
-            var newPoint = new Point(midpointX, midpointY);
+            var newPoint = new Point(currentMouseX, currentMouseY);
 
             // remove the connection between the two points
             
