@@ -1,11 +1,27 @@
 // make sure the canvas is full screen and responsive
-var asideWidth = document.getElementsByTagName("aside")[0].offsetWidth;
-var CanvasWidth=screen.availWidth-asideWidth;
+console.log("canvas width: ", CanvasWidth);
+
 // canvas height should be at max the container height
-var containerHeight = document.getElementsByClassName("section")[0].offsetHeight;
-var CanvasHeight= containerHeight;
-var o=window.document.getElementById("canvas");
-o.innerHTML="<canvas class='polygonCanvas' id='myCanvas' width='"+CanvasWidth+"' height='"+CanvasHeight+"'></canvas>";
+console.log("container height: ", containerHeight);
+
+// check if the screen width is less than 768px
+if (screen.availWidth < 768) {
+    var asideHeight = document.getElementsByTagName("aside")[0].offsetHeight;
+    var CanvasHeight = screen.availHeight - asideHeight;
+    var CanvasWidth = screen.availWidth;
+    console.log("canvas height: ", CanvasHeight);
+    console.log("canvas width: ", CanvasWidth);
+} else {
+    var asideWidth = document.getElementsByTagName("aside")[0].offsetWidth;
+    var CanvasWidth = screen.availWidth - asideWidth;
+    var containerHeight = document.getElementsByClassName("section")[0].offsetHeight;
+    var CanvasHeight = containerHeight;
+    console.log("canvas height: ", CanvasHeight);
+    console.log("canvas width: ", CanvasWidth);
+}
+
+var o = window.document.getElementById("canvas");
+o.innerHTML = "<canvas class='polygonCanvas' id='myCanvas' width='" + CanvasWidth + "' height='" + CanvasHeight + "'></canvas>";
 // button to input a number beetwen 3-8 to generate a new geometric shape of that size
 o.innerHTML+="<input class='polygonInput' type='number' id='inputNumber' min='3' max='8' placeholder='# of lines'>";
 o.innerHTML+="<button class='polygonButton' id='generateShape'>Generate Polygon</button>";
@@ -24,6 +40,7 @@ var clickCircleRadius = 15; // the radius of the circle that appears when a poin
 function drawRandomLine() {
     var xi = Math.random() * canvas.width;
     var yi = Math.random() * canvas.height;
+    console.log("xi: ", xi, " yi: ", yi);
     pointi = new Point(xi, yi);
     // the length of the line is random at minimum 100px
     var length = Math.random() * 100 + 100;
