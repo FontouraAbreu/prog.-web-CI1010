@@ -411,6 +411,24 @@ article {
         height: 100vh; /* Full height */
         overflow-x: auto;
     }
+
+    /* CLASS GRID */
+    /* -------------------------------------------------------------------------- */
+
+    /* center the grid */
+    .classesGridContainer {
+        display: flex;
+        margin: auto;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .ClassesGridContent {
+        text-align: center;
+        margin: 10px;
+    }
+
+    /* CLASS GRID */
     
     /* CANVA */
     /* -------------------------------------------------------------------------- */
