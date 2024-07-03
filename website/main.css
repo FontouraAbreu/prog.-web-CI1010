@@ -423,6 +423,12 @@ article {
         align-self: center;
     }
 
+    .ClassesGridHeader {
+        text-align: center;
+        margin: 10px;
+        font-weight: 600;
+    }
+
     .ClassesGridContent {
         text-align: center;
         margin: 10px;
