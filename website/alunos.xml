@@ -4,7 +4,7 @@
 <ALUNOS_CURSO
 xmlns="http://www.w3schools.com"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="localhost/bruno/alunos.xsd">
+xsi:schemaLocation="localhost/alunos.xsd">
 
 <ALUNO>
 <ID_CURSO_ALUNO>21621</ID_CURSO_ALUNO>
