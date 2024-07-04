@@ -423,15 +423,35 @@ article {
         align-self: center;
     }
 
-    .ClassesGridHeader {
+    .classesGridHeader {
         text-align: center;
         margin: 10px;
         font-weight: 600;
     }
 
-    .ClassesGridContent {
+    .classesGridContent {
         text-align: center;
         margin: 10px;
+    }
+
+    .classApproved {
+        color: green;
+    }
+
+    .classFailed {
+        color: red;
+    }
+
+    .classEnrolled {
+        color: blue;
+    }
+
+    .ClassEquivalent {
+        color: yellow;
+    }
+
+    .classNotEnrolled {
+        color: gray
     }
 
     /* CLASS GRID */
