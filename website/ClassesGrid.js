@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 let students_filtered = students.filter(function (student) {
                     return student.toLowerCase().includes(search_student_value.toLowerCase());
                 });
-                console.log(students_filtered);
                 var student_info = getStudentInfo(xmlDocument, students_filtered[0]);
                 drawClassesGrid(student_info);
             });
@@ -50,6 +49,9 @@ function drawClassesGrid(student_info) {
         console.error("Classes matrix is empty.");
     }
 
+    if (student_info !== undefined) {
+        var classes_taken = student_info[0].classes_taken;
+    }
 
     for (var i = 0; i < classesMatrix.length; i++) {
         var classesRow = document.createElement("div");
@@ -117,7 +119,8 @@ function getStudentInfo(xml, student_name) {
                 semester: student.getElementsByTagName("PERIODO")[0].textContent,
                 state: student.getElementsByTagName("SITUACAO")[0].textContent,
                 frequency: student.getElementsByTagName("FREQUENCIA")[0].textContent,
-                grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent
+                grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent,
+                classes_taken: getClassesTaken(xml, student_name)
             };
             // desirealize the student_info object
             students_info.push(student_info);
@@ -128,10 +131,53 @@ function getStudentInfo(xml, student_name) {
     return students_info;
 }
 
+function getClassesTaken(xml, student_name) {
+    // classes dictionary
+    var classes_taken = {};
+    var students = xml.getElementsByTagName("ALUNO");
+    // search for the correct student
+    for (var i = 0; i < students.length; i++) {
+        var student = students[i];
+        var student_name_xml = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
+        // if the student is found, extract the classes taken
+        if (student_name_xml === student_name) {
+            // needed info to extract the classes taken
+            class_info = {1:
+                {
+                course_code: student.getElementsByTagName("COD_ATIV_CURRIC")[0].textContent,
+                course_name: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
+                course_obligatory: student.getElementsByTagName("DESCR_ESTRUTURA")[0].textContent,
+                year: student.getElementsByTagName("ANO")[0].textContent,
+                semester: student.getElementsByTagName("PERIODO")[0].textContent,
+                state: student.getElementsByTagName("SITUACAO")[0].textContent,
+                frequency: student.getElementsByTagName("FREQUENCIA")[0].textContent,
+                grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent,
+                }
+            }
+            var classes = student.getElementsByTagName("COD_ATIV_CURRIC");
+            // add each class taken to the classes_taken dictionary
+            for (var j = 0; j < classes.length; j++) {
+                var class_code = classes[j].textContent;
+                // if the class is not already in the dictionary, add it
+                if (!classes_taken.hasOwnProperty(class_code)){
+                    classes_taken[class_code] = class_info;
+                }
+                else {
+                    // var class_info_size = Object.keys(classes_taken[class_code]["class_info"]).length;
+                    // classes_taken[class_code]["class_info"][class_info_size+1] = class_info;
+                }
+                console.log(classes_taken);
+            }
+        }
+    }
+    console.log("classes taken:");
+    console.log(classes_taken);
+    return classes_taken;
+}
+
 // function to extract the students details from the xml file
 function getStudents(xml) {
     // var students = xml_request.responseXML.getElementsByTagName("aluno");
-    console.log(xml);
     var students = xml.getElementsByTagName("ALUNO");
     // console.log(students);
     var students_unique = [];
