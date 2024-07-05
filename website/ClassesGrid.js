@@ -107,27 +107,42 @@ function getCourseState(student_info, course_code) {
 function getStudentInfo(xml, student_name) {
     var students = xml.getElementsByTagName("ALUNO");
     var students_info = [];
+    var classes_taken = {};
     for (var i = 0; i < students.length; i++) {
         var student = students[i];
         var student_name_xml = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
         if (student_name_xml === student_name) {
-            var student_info = {
-                course: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
+            class_info = {1:
+                {
                 course_code: student.getElementsByTagName("COD_ATIV_CURRIC")[0].textContent,
+                course_name: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
                 course_obligatory: student.getElementsByTagName("DESCR_ESTRUTURA")[0].textContent,
                 year: student.getElementsByTagName("ANO")[0].textContent,
                 semester: student.getElementsByTagName("PERIODO")[0].textContent,
                 state: student.getElementsByTagName("SITUACAO")[0].textContent,
                 frequency: student.getElementsByTagName("FREQUENCIA")[0].textContent,
                 grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent,
-                classes_taken: getClassesTaken(xml, student_name)
-            };
+                }
+            }
+            var classes = student.getElementsByTagName("COD_ATIV_CURRIC");
+            // add each class taken to the classes_taken dictionary
+            for (var j = 0; j < classes.length; j++) {
+                var class_code = classes[j].textContent;
+                // if the class is not already in the dictionary, add it
+                if (!classes_taken.hasOwnProperty(class_code)){
+                    classes_taken[class_code] = class_info;
+                }
+                else {
+                    var class_info_size = Object.keys(classes_taken[class_code]["class_info"]).length;
+                    classes_taken[class_code]["class_info"][class_info_size+1] = class_info;
+                }
+            }
+            console.log(classes_taken);
             // desirealize the student_info object
             students_info.push(student_info);
         }
     }
     console.log("student info:");
-    console.log(students_info);
     return students_info;
 }
 
@@ -135,6 +150,8 @@ function getClassesTaken(xml, student_name) {
     // classes dictionary
     var classes_taken = {};
     var students = xml.getElementsByTagName("ALUNO");
+    console.log(students);
+    return;
     // search for the correct student
     for (var i = 0; i < students.length; i++) {
         var student = students[i];
