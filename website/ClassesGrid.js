@@ -1,12 +1,12 @@
 classesMatrix = [
     ["1º", "CI068", "CI055", "CM046", "CM045", "CM201"], // 1º
     ["2º", "CI210", "CI056", "CI067", "CM005", "CM202"], // 2º
-    ["3º", "CI212", "CI057", "CI064", "CI123", "CI166"], // 3º
+    ["3º", "CI212", "CI057", "CI064", "CI237", "CI166"], // 3º
     ["4º", "CI215", "CI062", "CE003", "CI058", "CI164"], // 4º
     ["5º", "CI162", "CI065", "CI059", "CI061", "SA214"], // 5º
     ["6º", "CI163", "CI165", "CI209", "CI218", "CI220"], // 6º
-    ["7º", "CI221", "CI211", "OPT", "OPT", "TG I"],     // 7º
-    ["8º", "OPT", "OPT", "OPT", "OPT", "TG II"]         // 8º
+    ["7º", "CI221", "CI211", "Optativas", "Optativas", "Trabalho de Graduação I"],     // 7º
+    ["8º", "Optativas", "Optativas", "Optativas", "Optativas", "Trabalho de Graduação II"]         // 8º
 ]
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -22,11 +22,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 var search_student_value = search_student.value;
 
                 var students = getStudents(xmlDocument);
+                // console.log("students:");
+                console.log(students);
+
                 let students_filtered = students.filter(function (student) {
                     return student.toLowerCase().includes(search_student_value.toLowerCase());
                 });
-                var student_info = getStudentInfo(xmlDocument, students_filtered[0]);
-                drawClassesGrid(student_info);
+                var student_clases = getStudentClasses(xmlDocument, students_filtered[0]);
+                drawClassesGrid(student_clases);
             });
             // console.log(search_student);
             // students = studentsDetails(xmlDocument);
@@ -36,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.log("Error:", error));
     });
 
-function drawClassesGrid(student_info) {
+function drawClassesGrid(student_classes) {
     var classesGrid = document.getElementById("classesGridContainer");
     if (!classesGrid) {
         console.error("Element with id 'classesGridContainer' not found.");
@@ -49,9 +52,12 @@ function drawClassesGrid(student_info) {
         console.error("Classes matrix is empty.");
     }
 
-    if (student_info !== undefined) {
-        var classes_taken = student_info[0].classes_taken;
+    if (student_classes !== undefined) {
+        console.log("student classes:");
+        console.log(student_classes);
+        var classes_taken = student_classes[0].classes_taken;
     }
+
 
     for (var i = 0; i < classesMatrix.length; i++) {
         var classesRow = document.createElement("div");
@@ -59,15 +65,18 @@ function drawClassesGrid(student_info) {
         for (var j = 0; j < classesMatrix[i].length; j++) {
             var classCell = document.createElement("div");
             classCell.className = "row-sm classesGridContent";
-            // if the student_info is not undefined and the current cell is not the first one
-            if (student_info !== undefined && j != 0) {
-                var course_state = getCourseState(student_info, classesMatrix[i][j]);
+            // if the student_classes is not undefined and the current cell is not the first one
+            if (student_classes !== undefined && j != 0) {
+                var [course_state, course_code] = getCourseState(student_classes, classesMatrix[i][j]);
                 // console.log(classesMatrix[i][j]);
-                console.log(course_state);
+                console.log(classesMatrix[i][j] + ' ' + course_state);
                 // extract only the first word
-                // course_state = course_state.split(" ")[0];
+                course_state = course_state.split(" ")[0];
                 switch (course_state) {
                     case "Aprovado":
+                        classCell.className += " classApproved";
+                        break;
+                    case "Dispensa":
                         classCell.className += " classApproved";
                         break;
                     case "Reprovado":
@@ -84,7 +93,12 @@ function drawClassesGrid(student_info) {
                         break;
                 }
             }
-            classCell.textContent = classesMatrix[i][j];
+            if (j == 0) {
+                classCell.textContent = classesMatrix[i][j];
+            }
+            else {
+                classCell.textContent = course_code;
+            }
             classesRow.appendChild(classCell);
         }
         classesGridTable.appendChild(classesRow);
@@ -92,75 +106,31 @@ function drawClassesGrid(student_info) {
     classesGrid.appendChild(classesGridTable);
 }
 
-function getCourseState(student_info, course_code) {
+function getCourseState(student_classes, course_code) {
     var state = "";
-    for (var i = 0; i < student_info.length; i++) {
-        if (student_info[i].course_code === course_code) {
-            state = student_info[i].state;
+    for (var i = 0; i < student_classes.length; i++) {
+        if (student_classes[i].course_code === course_code || student_classes[i].course_obligatory === course_code) {
+            state = student_classes[i].state;
+        }
+        if (course_code === "Optativas") {
+            course_code = student_classes[i].course_code;
         }
     }
-    return state;
+    return [state, course_code];
 }
-
     
 
-function getStudentInfo(xml, student_name) {
+function getStudentClasses(xml, student_name) {
     var students = xml.getElementsByTagName("ALUNO");
-    var students_info = [];
-    var classes_taken = {};
-    for (var i = 0; i < students.length; i++) {
-        var student = students[i];
-        var student_name_xml = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
-        if (student_name_xml === student_name) {
-            class_info = {1:
-                {
-                course_code: student.getElementsByTagName("COD_ATIV_CURRIC")[0].textContent,
-                course_name: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
-                course_obligatory: student.getElementsByTagName("DESCR_ESTRUTURA")[0].textContent,
-                year: student.getElementsByTagName("ANO")[0].textContent,
-                semester: student.getElementsByTagName("PERIODO")[0].textContent,
-                state: student.getElementsByTagName("SITUACAO")[0].textContent,
-                frequency: student.getElementsByTagName("FREQUENCIA")[0].textContent,
-                grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent,
-                }
-            }
-            var classes = student.getElementsByTagName("COD_ATIV_CURRIC");
-            // add each class taken to the classes_taken dictionary
-            for (var j = 0; j < classes.length; j++) {
-                var class_code = classes[j].textContent;
-                // if the class is not already in the dictionary, add it
-                if (!classes_taken.hasOwnProperty(class_code)){
-                    classes_taken[class_code] = class_info;
-                }
-                else {
-                    var class_info_size = Object.keys(classes_taken[class_code]["class_info"]).length;
-                    classes_taken[class_code]["class_info"][class_info_size+1] = class_info;
-                }
-            }
-            console.log(classes_taken);
-            // desirealize the student_info object
-            students_info.push(student_info);
-        }
-    }
-    console.log("student info:");
-    return students_info;
-}
-
-function getClassesTaken(xml, student_name) {
-    // classes dictionary
-    var classes_taken = {};
-    var students = xml.getElementsByTagName("ALUNO");
-    console.log(students);
-    return;
+    var classes_taken = [];
     // search for the correct student
     for (var i = 0; i < students.length; i++) {
         var student = students[i];
         var student_name_xml = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
+        var student_classes = 0;
         // if the student is found, extract the classes taken
         if (student_name_xml === student_name) {
-            // needed info to extract the classes taken
-            class_info = {1:
-                {
+            classes_taken.push({
                 course_code: student.getElementsByTagName("COD_ATIV_CURRIC")[0].textContent,
                 course_name: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
                 course_obligatory: student.getElementsByTagName("DESCR_ESTRUTURA")[0].textContent,
@@ -169,28 +139,14 @@ function getClassesTaken(xml, student_name) {
                 state: student.getElementsByTagName("SITUACAO")[0].textContent,
                 frequency: student.getElementsByTagName("FREQUENCIA")[0].textContent,
                 grade: student.getElementsByTagName("MEDIA_FINAL")[0].textContent,
-                }
-            }
-            var classes = student.getElementsByTagName("COD_ATIV_CURRIC");
-            // add each class taken to the classes_taken dictionary
-            for (var j = 0; j < classes.length; j++) {
-                var class_code = classes[j].textContent;
-                // if the class is not already in the dictionary, add it
-                if (!classes_taken.hasOwnProperty(class_code)){
-                    classes_taken[class_code] = class_info;
-                }
-                else {
-                    // var class_info_size = Object.keys(classes_taken[class_code]["class_info"]).length;
-                    // classes_taken[class_code]["class_info"][class_info_size+1] = class_info;
-                }
-                console.log(classes_taken);
-            }
+            });
         }
     }
     console.log("classes taken:");
     console.log(classes_taken);
     return classes_taken;
 }
+
 
 // function to extract the students details from the xml file
 function getStudents(xml) {
