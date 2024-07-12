@@ -66,19 +66,18 @@ document.addEventListener("contextmenu", function (event) {
                     return course.course_code === targe_course_code || course.course_obligatory === targe_course_code;
                 });
                 var class_history = getClassHistory(student_classes, course.course_code);
+                if (class_history.length === 0) {
+                    class_history = []
+                }
+
                 console.log(class_history);
-                drawClassesHistory(class_history);
+                // get the parent div based on the cell clicked
+                var parent_target = target.parentElement;
+                drawClassesHistory(class_history, parent_target);
 
 
             })
             .catch(error => console.log("Error:", error));
-    }
-    // if the target is not the classCell, then hide the popup
-    else {
-        var popup = document.getElementsByClassName("popuptext")[0];
-        if (popup) {
-            popup.classList.toggle("show");
-        }
     }
 });
 
@@ -100,7 +99,7 @@ function drawClassesGrid(student_classes) {
     student_optional_classes = [];
     for (var i = 0; i < classesMatrix.length; i++) {
         var classesRow = document.createElement("div");
-        classesRow.className = "col";
+        classesRow.className = "col classesGridColumn";
         for (var j = 0; j < classesMatrix[i].length; j++) {
             var classCell = document.createElement("div");
             classCell.className = "row-sm classesGridContent";
@@ -160,35 +159,104 @@ function drawClassesGrid(student_classes) {
 }
 
 
-function drawClassesHistory(class_history) {
+function drawClassesHistory(class_history, target) {
     var classesHistory = document.getElementById("classesGridContainer");
     if (!classesHistory) {
         console.error("Element with id 'classesGridContainer' not found.");
     }
-    classesHistory.innerHTML = "";
-    var classesHistoryTable = document.createElement("div");
-    
-    if (class_history.length === 0) {
-        console.error("Classes history is empty.");
-    }
+
+    var class_history_list = [];
     // draw as a list
     for (var i = 0; i < class_history.length; i++) {
-        var class_history_content = document.createElement("div");
-        class_history_content.className = "row-sm popuptext classesHistoryContent";
-        class_history_content.textContent = 
-            "Código: " + class_history[i].course_code + 
-            "\r\nNome: " + class_history[i].course_name.toLowerCase() +
-            "\r\nAno: " + class_history[i].year +
-            "\r\nSemestre: " + class_history[i].semester +
-            "\r\nEstado: " + class_history[i].state +
-            "\r\nFrequência: " + parseFloat(class_history[i].frequency) +
-            "\r\nNota: " + parseFloat(class_history[i].grade);
-        classesHistoryTable.appendChild(class_history_content);
-    }
-    
-    classesHistory.appendChild(classesHistoryTable);
+        // create a div as a son of the target element
+        var class_history_content = target.appendChild(document.createElement("div"));
+        // set the width of the div
+        class_history_content.style.width = "300px";
+        // make the middle of the div in the middle of the target
+        class_history_content.style.top = target.style.top;
+        console.log(target.offsetTop);
 
-    class_history_content.classList.toggle("show");
+        // set the class of the div
+        class_history_content.className = "row-sm popuptext classesHistoryContent";
+
+
+        class_history_content.textContent = 
+            "\tCódigo: " + class_history[i].course_code + 
+            "\r\n\tNome: " + class_history[i].course_name.toLowerCase() +
+            "\r\n\tAno: " + class_history[i].year +
+            "\r\n\tSemestre: " + class_history[i].semester +
+            "\r\n\Situação: " + class_history[i].state +
+            "\r\n\tFrequência: " + parseFloat(class_history[i].frequency) +
+            "\r\n\tNota: " + parseFloat(class_history[i].grade);
+            
+        // add arrows so that the user can change which classes are shown
+        var arrow_right = class_history_content.appendChild(document.createElement("div"));
+        arrow_right.className = "row-sm popuptext classesHistoryArrow";
+        arrow_right.id = "arrowRight";
+        arrow_right.textContent = ">";
+        arrow_right.style.right = "0px";
+        arrow_right.style.top = target.offsetTop + "px";
+        arrow_right.style.position = "absolute";
+
+        var arrow_left = class_history_content.appendChild(document.createElement("div"));
+        arrow_left.className = "row-sm popuptext classesHistoryArrow";
+        arrow_left.id = "arrowLeft";
+        arrow_left.textContent = "<";
+        arrow_left.style.left = "0px";
+        arrow_left.style.top = target.offsetTop + "px";
+        arrow_left.style.position = "absolute";
+
+        // add the class to the list
+        class_history_list.push(class_history_content);
+    }
+
+    
+    // make only the first class visible
+    class_history_list[0].style.display = "block";
+
+    addEventListener("click", function (event) {
+        var target = event.target;
+        if (target.id === "arrowRight") {
+            // get the index of the current class
+            var index = class_history_list.indexOf(target.parentElement);
+            // make the current class invisible
+            class_history_list[index].style.display = "none";
+            // make the next class visible
+            if (index + 1 === class_history_list.length) {
+                class_history_list[0].style.display = "block";
+            }
+            else {
+                class_history_list[index + 1].style.display = "block";
+            }
+            class_history_list[index + 1].style.display = "block";
+        }
+        else if (target.id === "arrowLeft") {
+            // get the index of the current class
+            var index = class_history_list.indexOf(target.parentElement);
+            // make the current class invisible
+            class_history_list[index].style.display = "none";
+            // make the previous class visible
+            if (index > 0) {
+                class_history_list[index - 1].style.display = "block";
+            }
+            else {
+                class_history_list[class_history_list.length - 1].style.display = "block";
+            }
+        }
+    }
+    );
+
+
+    
+    class_history_list.forEach(function (class_history_content) {
+        class_history_content.style.display = "block";
+    }
+    );
+
+    // make the popup visible
+    // classesHistory.appendChild(classesHistoryTable);
+
+    
 }
 
 
