@@ -415,6 +415,18 @@ article {
     /* CLASS GRID */
     /* -------------------------------------------------------------------------- */
 
+    .searchStudentInput {
+        width: 50%;
+        height: 40px;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        /* set it to the top */
+        position: absolute;
+        top: 0;
+        left: 18%;
+    }
     /* center the grid */
     .classesGridContainer {
         display: flex;
@@ -429,7 +441,12 @@ article {
         font-weight: 600;
     }
 
+    .classesGridColumn {
+        position: relative;
+    }
+
     .classesGridContent {
+        position: relative;
         text-align: center;
         margin: 10px;
     }
@@ -462,11 +479,6 @@ article {
     /* CLASS GRID */
 
     /* STUDENT HISTORY POPUP */
-
-    /* make a overlay */
-
-
-
     /* Popup container */
     .popup {
       position: relative;
@@ -477,7 +489,7 @@ article {
     /* The actual popup (appears on top) */
     .popup .popuptext {
         white-space: pre-wrap;
-        visibility: hidden;
+        visibility: visible;
         width: auto;
         background-color: #555;
         color: #fff;
@@ -486,9 +498,6 @@ article {
         padding: 0.5%;
         position: absolute;
         z-index: 1;
-        bottom: 125%;
-        left: 50%;
-        margin-left: -80px;
     }
 
     /* Popup arrow */
@@ -520,6 +529,8 @@ article {
         from {opacity: 0;}
         to {opacity:1 ;}
     }
+    /* STUDENT HISTORY POPUP */
+
 
     /* CANVA */
     /* -------------------------------------------------------------------------- */
