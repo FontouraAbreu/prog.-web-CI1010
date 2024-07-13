@@ -11,6 +11,8 @@ classesMatrix = [
 
 student_optional_classes = [];  // array to store the optional classes of the student
 
+history_is_visible = false;
+
 document.addEventListener("DOMContentLoaded", function () {
     drawClassesGrid("");
     fetch("alunos.xml")
@@ -19,16 +21,19 @@ document.addEventListener("DOMContentLoaded", function () {
             var parser = new DOMParser();
             var xmlDocument = parser.parseFromString(data, "application/xml");
             // update the search_student variable when the input is changed
-            document.addEventListener("input", function () {
-                var search_student = document.getElementById("searchStudent");
-
+            var search_student = document.getElementById("searchStudent");
+            document.addEventListener("change", function () {
+                console.log(search_student.value);
                 var students = getStudents(xmlDocument);
                 // console.log("students:");
                 // console.log(students);
-
+                
                 let students_filtered = students.filter(function (student) {
                     return student.toLowerCase().includes(search_student.value.toLowerCase());
                 });
+                if (search_student.value === "") {
+                    students_filtered = [];
+                }
                 var student_clases = getStudentClasses(xmlDocument, students_filtered[0]);
                 drawClassesGrid(student_clases);
             });
@@ -44,15 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("contextmenu", function (event) {
     event.preventDefault();
     var target = event.target;
+    if (history_is_visible) {
+        var classesHistory = document.getElementsByClassName("popuptext");
+        for (var i = 0; i < classesHistory.length; i++) {
+            classesHistory[i].style.display = "none";
+        }
+        history_is_visible = false;
+    }
     if (target.id === "classCell") {
+        history_is_visible = true;
         var targe_course_code = target.textContent;
-        var student_name = document.getElementById("searchStudent").value;
         fetch("alunos.xml")
             .then(response => response.text())
             .then(data => {
                 var parser = new DOMParser();
                 var xmlDocument = parser.parseFromString(data, "application/xml");
                 var search_student = document.getElementById("searchStudent");
+                console.log(search_student.value);
+                if (search_student.value === "") {
+                    return;
+                }
 
                 var students = getStudents(xmlDocument);
                 let students_filtered = students.filter(function (student) {
@@ -60,17 +76,31 @@ document.addEventListener("contextmenu", function (event) {
                 });
                 var student = students_filtered[0];
                 var student_classes = getStudentClasses(xmlDocument, student);
-                console.log(targe_course_code);
-                console.log(student_classes);
+                // console.log(targe_course_code);
+                // console.log(student_classes);
                 var course = student_classes.find(function (course) {
                     return course.course_code === targe_course_code || course.course_obligatory === targe_course_code;
                 });
+                if (student_classes === undefined) {
+                    student_classes = [];
+                }
+                if (course === undefined) {
+                    course = {
+                        course_code: targe_course_code,
+                        course_name: "Não encontrado",
+                        year: "0",
+                        semester: "0",
+                        state: "Não encontrado",
+                        frequency: "0",
+                        grade: "0",
+                    }
+                }
+
                 var class_history = getClassHistory(student_classes, course.course_code);
-                if (class_history.length === 0) {
+                if (class_history.length === 0 || course === undefined) {
                     class_history = []
                 }
 
-                console.log(class_history);
                 // get the parent div based on the cell clicked
                 var parent_target = target.parentElement;
                 drawClassesHistory(class_history, parent_target);
@@ -121,6 +151,9 @@ function drawClassesGrid(student_classes) {
                 
                 var course_state = getCourseState(student_classes, course_code);
 
+                if (classesMatrix[i][j] === "Trabalho de Graduação I")
+
+                // console.log(course_code);
                 // console.log(classesMatrix[i][j]);
                 // extract only the first word
                 course_state = course_state.split(" ")[0];
@@ -171,10 +204,9 @@ function drawClassesHistory(class_history, target) {
         // create a div as a son of the target element
         var class_history_content = target.appendChild(document.createElement("div"));
         // set the width of the div
-        class_history_content.style.width = "300px";
+        class_history_content.style.width = "320px";
         // make the middle of the div in the middle of the target
         class_history_content.style.top = target.style.top;
-        console.log(target.offsetTop);
 
         // set the class of the div
         class_history_content.className = "row-sm popuptext classesHistoryContent";
@@ -185,7 +217,7 @@ function drawClassesHistory(class_history, target) {
             "\r\n\tNome: " + class_history[i].course_name.toLowerCase() +
             "\r\n\tAno: " + class_history[i].year +
             "\r\n\tSemestre: " + class_history[i].semester +
-            "\r\n\Situação: " + class_history[i].state +
+            "\r\n\tSituação: " + class_history[i].state +
             "\r\n\tFrequência: " + parseFloat(class_history[i].frequency) +
             "\r\n\tNota: " + parseFloat(class_history[i].grade);
             
@@ -212,7 +244,9 @@ function drawClassesHistory(class_history, target) {
 
     
     // make only the first class visible
-    class_history_list[0].style.display = "block";
+    if (class_history_list.length > 0) {
+        class_history_list[0].style.display = "block";
+    }
 
     addEventListener("click", function (event) {
         var target = event.target;
@@ -262,6 +296,9 @@ function drawClassesHistory(class_history, target) {
 
 function getClassHistory(student_classes, course_code) {
     var class_history = [];
+    if (student_classes === undefined || student_classes.length === 0) {
+        return class_history;
+    }
     for (var i = 0; i < student_classes.length; i++) {
         if (student_classes[i].course_code === course_code) {
             class_history.push(student_classes[i]);
@@ -275,6 +312,7 @@ function getCourseState(student_classes, course_code) {
     if (course_code === "Optativas") {
         return state;
     }
+    console.log(student_classes);
     for (var i = 0; i < student_classes.length; i++) {
         if (student_classes[i].course_code === course_code || student_classes[i].course_obligatory === course_code) {
             state = student_classes[i].state;
@@ -307,10 +345,11 @@ function getStudentClasses(xml, student_name) {
     // search for the correct student
     for (var i = 0; i < students.length; i++) {
         var student = students[i];
-        var student_name_xml = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
-        var student_classes = 0;
+        var student_name_xml = student.getElementsByTagName("MATR_ALUNO")[0].textContent;
         // if the student is found, extract the classes taken
         if (student_name_xml === student_name) {
+            console.log(student_name);
+            console.log(student_name_xml);
             classes_taken.push({
                 course_code: student.getElementsByTagName("COD_ATIV_CURRIC")[0].textContent,
                 course_name: student.getElementsByTagName("NOME_ATIV_CURRIC")[0].textContent,
@@ -336,8 +375,7 @@ function getStudents(xml) {
     // extract the students names
     for (var i = 0; i < students.length; i++) {
         var student = students[i];
-        var student_name = student.getElementsByTagName("NOME_ALUNO")[0].textContent;
-        var student_registry = student.getElementsByTagName("MATR_ALUNO")[0].textContent;
+        var student_name = student.getElementsByTagName("MATR_ALUNO")[0].textContent;
         if (!students_unique.includes(student_name)) {
             students_unique.push(student_name);
         }
