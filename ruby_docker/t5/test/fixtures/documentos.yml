@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rg: MyString
+  cpf: MyString
+  titulo_eleitor: MyString
+  pessoa: one
+
+two:
+  rg: MyString
+  cpf: MyString
+  titulo_eleitor: MyString
+  pessoa: two
