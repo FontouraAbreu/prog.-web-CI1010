@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCPxUDP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist+Mono&display=swap');
+
+        /* Estilo geral */
+        body {
+            font-family: 'Geist Mono', monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: #1D1F26;
+            color: #e9e7e7;
+        }
+
+        header {
+            background: #39594D;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #1e1e1e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 0 10px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #b8b3b3;
+            background: #A6330A;
+            border-radius: 5px;
+        }
+
+        section {
+            padding: 20px;
+            margin: 20px 32px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #212620;
+        }
+
+        .code {
+            background: #424141;
+            color: #cfcfcf;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .text {
+            text-align: justify;
+        }
+
+        .files {
+            background: #2d2d2d;
+            color: #cfcfcf;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 100%;
+            max-width: 700px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(233, 233, 233, 0.2);
+            margin: 10px;
+            object-fit: cover;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .udp {
+            background: #6b0f0f;
+            color: #cfcfcf;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .tcp {
+            background: #1d2c70;
+            color: #cfcfcf;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .emphasis {
+            background: #3d4106;
+            color: #cfcfcf;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .links a {
+            margin: 0 10px;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: cornflowerblue;
+            font-weight: bold;
+        }
+
+        .links a:hover {
+            color: #b8b3b3;
+            background: #A6330A;
+            border-radius: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        table th,
+        table td {
+            border: 1px solid #ddd;
+            padding: 5px;
+            text-align: center;
+        }
+
+        table th {
+            background: #39594D;
+            color: white;
+        }
+
+        table tr:first-child th:first-child {
+            border-top-left-radius: 5px;
+        }
+
+        table tr:first-child th:last-child {
+            border-top-right-radius: 5px;
+        }
+
+        table tr:last-child td:first-child {
+            border-bottom-left-radius: 5px;
+        }
+
+        table tr:last-child td:last-child {
+            border-bottom-right-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #39594D;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #cfcfcf;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Relatório: TCPxUDP: A Verdade</h1>
+        <h3><b>Gabriel Simon Batista Ribeiro - GRR20210575 e Vinícius Fontoura de Abreu - GRR20206873</b></h3>
+    </header>
+
+    <nav>
+        <a href="#introducao">Introdução</a>
+        <a href="#metodologia">Como Fizemos os Testes</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#analise">A Verdade!</a>
+    </nav>
+
+    <section id="introducao">
+        <h2>Introdução</h2>
+        <p class="text">
+            Ao longo deste semestre, aprofundamos nossos estudos sobre os protocolos de comunicação UDP e TCP,
+            explorando suas características fundamentais, as aplicações
+            mais adequadas para cada um, e os cenários em que eles se destacam ou enfrentam desafios. O TCP é amplamente
+            utilizado em aplicações que exigem alta confiabilidade e integridade dos dados, como transferência de
+            arquivos, navegação web e comunicações de e-mail. Por outro lado, o UDP se destaca em situações que demandam
+            baixa latência e alta velocidade, como transmissões de vídeo ao vivo, jogos online e sistemas de voz sobre
+            IP (VoIP).
+            <br />
+            <br />
+            Além de compreender onde e como esses protocolos são utilizados, analisamos as vantagens e desvantagens
+            inerentes a cada um. O TCP oferece confiabilidade ao estabelecer conexões, retransmitir pacotes perdidos e
+            controlar congestionamento, mas isso pode resultar em maior sobrecarga e menor eficiência em situações de
+            rede instável. Já o UDP, por ser leve e não oferecer controles como retransmissão e verificação de entrega,
+            alcança desempenho superior em termos de velocidade, mas sacrifica a confiabilidade, sendo mais suscetível a
+            perdas de pacotes e fragmentação.
+            <br />
+            <br />
+            Com isso, nosso objetivo foi explorar contextos em que essa máxima não se aplica ou é subvertida. Para isso,
+            trouxemos a seguinte dúvida: <b>em que situações o TCP pode superar o UDP em termos de desempenho?</b>
+            <br />
+            <br />
+            Vamos partir da premissa de que o <b>UDP é mais rápido que o TCP</b>, devido à ausência de controle de
+            conexão e
+            menor sobrecarga. No entanto, a maioria dos rotedores modernos contém otimizações em hardware para o TCP, o
+            que pode resultar em um desempenho superior em certas situações. Para testar essa hipótese, realizamos
+            experimentos em enlaces reais e virtuais, comparando o desempenho do TCP e UDP em diferentes condições de
+            rede.
+        </p>
+    </section>
+
+    <section id="metodologia">
+        <h2>Como fizemos os Testes</h2>
+        <p class="text">
+            Realizamos dois tipos de testes, um em enlaces reais do PoP-PR (Com permissão do coordenador técnico do PoP
+            -
+            Chrystian Lyra) e outro em enlaces virtuais utilizando o <span class="code">Docker</span>. Usamos esses dois
+            ambientes
+            com o objetivo de
+            verificar se as otimizações de hardware para o TCP terão algum efeito prático na banda atingida. Os testes
+            foram realizados em
+            enlaces de 500Mbit/s e 1Gbit/s, usando diferentes tamanhos de MTU (1500 e 9000) tanto para o TCP quanto para
+            o UDP.
+            <br />
+        <h3><b>Testes em Enlaces Reais</b></h3>
+        Para realizar os testes em enlaces reais, utilizamos o <span class="code">iperf3</span> como ferramenta de
+        medição de
+        desempenho.
+        O <span class="code">iperf3</span> é uma ferramenta de código aberto que permite medir a largura de banda e a
+        qualidade
+        de uma conexão de rede. Para os testes, utilizamos um servidor <span class="code">iperf3</span> em uma máquina
+        virtual no
+        PoP-PR e clientes em máquinas locais na outra ponta do enlace. Foram usados enlaces das seguintes instituições:
+        UTFPR, UFPR e IFPR.
+
+        <h3><b>Testes em Enlaces Virtuais</b></h3>
+        Para realizar os testes em enlaces virtuais, utilizamos o <span class="code">Docker</span> como ferramenta de
+        virtualização
+        principal para a construção e execução dos ambientes de teste. O <span class="code">Docker</span> nos permitiu
+        criar um
+        ambiente
+        isolado e facilmente manipulavel para configurar um servidor e clientes usando o <span
+            class="code">iperf3</span>.
+        <br />
+        Os enlaces virtuais foram configurados usando o <span class="code">tc</span> (traffic control) do Linux, que
+        permite simular
+        diferentes condições de rede, como latência, perda de pacotes e largura de banda.
+        <br />
+        <br />
+        Abaixo estão os arquivos de configuração utilizados para a construção dos containêres
+        <ul>
+            <li><a class="files" href="./redes/Dockerfile.txt" target="_blank">Dockerfile</a></li>
+            <li><a class="files" href="./redes/docker-compose.yml.txt" target="_blank">docker-compose.yml</a></li>
+            <li><a class="files" href="./redes/entrypoint.sh.txt" target="_blank">entrypoint.sh</a></li>
+        </ul>
+        <h3><b>Executando os testes</b></h3>
+        Para executar os testes, é necessário ter o <span class="code">Docker</span> em uma versão recente instalada na
+        máquina.
+        <br />
+        <br />
+        Basta baixar os arquivos acima e renomeá-lo, retirando o <span>.txt</span> do nome, e executar o seguinte comando:
+        <pre>docker compose up -d</pre>
+        Após a execução do comando, os containêres serão criados e os testes serão executados. Os resultados de cada
+        teste serão armazenados numa nova pasta chamada <span class="code">volumes/iperf/</span>.
+        </p>
+    </section>
+
+    <section id="resultados">
+        <h2>Resultados</h2>
+        <p>
+            Após a realização dos testes em enlaces reais e virtuais, obtivemos os seguintes resultados:
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">Banda nominal</th>
+                    <th rowspan="2">Protocolo</th>
+                    <th rowspan="2">MTU</th>
+                    <th colspan="3">Enlace real</th>
+                    <th colspan="3">Enlace virtual</th>
+                </tr>
+                <tr>
+                    <th>Banda atingida</th>
+                    <th>Atraso (ms)</th>
+                    <th>Packet loss</th>
+                    <th>Banda atingida</th>
+                    <th>Atraso (ms)</th>
+                    <th>Packet loss</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 500Mbit/s 1500 -->
+                <tr>
+                    <td>500 Mbits/s</td>
+                    <td>TCP</td>
+                    <td>1500</td>
+                    <!-- Real -->
+                    <td>495.88</td>
+                    <td>0.832</td>
+                    <td>0%</td>
+                    <!-- virtual -->
+                    <td>475</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 500Mbit/s 1500 -->
+                <tr>
+                    <td>500 Mbits/s</td>
+                    <td>UDP</td>
+                    <td>1500</td>
+                    <!-- Real -->
+                    <td>500.17</td>
+                    <td>0.748</td>
+                    <td>0.281%</td>
+                    <!-- virtual -->
+                    <td>485</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 500Mbit/s 9000 -->
+                <tr>
+                    <td>500 Mbits/s</td>
+                    <td>TCP</td>
+                    <td>9000</td>
+                    <!-- Real -->
+                    <td>499.68</td>
+                    <td>0.832</td>
+                    <td>0%</td>
+                    <!-- virtual -->
+                    <td>475</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 500Mbit/s 9000 -->
+                <tr>
+                    <td>500 Mbits/s</td>
+                    <td>UDP</td>
+                    <td>9000</td>
+                    <!-- Real -->
+                    <td>500.05</td>
+                    <td>0.995</td>
+                    <td>0%</td>
+                    <!-- virtual -->
+                    <td>481</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 1000Mbit/s 1500 -->
+                <tr>
+                    <td>1000 Mbits/s</td>
+                    <td>TCP</td>
+                    <td>1500</td>
+                    <!-- Real -->
+                    <td>907.56</td>
+                    <td>20.860</td>
+                    <td>0%</td>
+                    <!-- virtual -->
+                    <td>948</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 1000Mbit/s 1500 -->
+                <tr>
+                    <td>1000 Mbits/s</td>
+                    <td>UDP</td>
+                    <td>1500</td>
+                    <!-- Real -->
+                    <td>888.62</td>
+                    <td>21.356</td>
+                    <td>11.179%</td>
+                    <!-- virtual -->
+                    <td>967</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 1000Mbit/s 9000 -->
+                <tr>
+                    <td>1000 Mbits/s</td>
+                    <td>TCP</td>
+                    <td>9000</td>
+                    <!-- Real -->
+                    <td>946.31</td>
+                    <td>15.481</td>
+                    <td>0%</td>
+                    <!-- virtual -->
+                    <td>948</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+                <!-- 1000Mbit/s 9000 -->
+                <tr>
+                    <td>1000 Mbits/s</td>
+                    <td>UDP</td>
+                    <td>9000</td>
+                    <!-- Real -->
+                    <td>997.28</td>
+                    <td>37.820</td>
+                    <td>0.285%</td>
+                    <!-- virtual -->
+                    <td>963</td>
+                    <td>0</td>
+                    <td>0%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        Para ajudar na visualização dos resultados, preparamos gráficos comparando a banda atingida em cada cenário de
+        teste.
+        <div class="gallery">
+            <img src="./imgs/Enlaces 500 Mbps - 1500 MTU.svg" alt="Gráfico 500Mbit/s 1500 MTU">
+            <img src="./imgs/Enlaces 500 Mbps - 9000 MTU.svg" alt="Gráfico 500Mbit/s 9000 MTU">
+            <br>
+            <br>
+            <img src="./imgs/Enlaces 1000 Mbps - 1500 MTU.svg" alt="Gráfico 1000Mbit/s 1500 MTU">
+            <img src="./imgs/Enlaces 1000 Mbps - 9000 MTU.svg" alt="Gráfico 1000Mbit/s 9000 MTU">
+        </div>
+
+        <div class="texto">
+            <p>
+                Com os gráficos fica claro que:
+            </p>
+
+            <h3><b>Enlaces Reais</b></h3>
+            <p>
+                Nos <b>enlaces reais</b>, com <span class="emphasis">MTU 1500</span>, o
+                <span class="tcp">TCP</span> atingiu em média <span class="tcp">94.96%</span>
+                da banda nominal, enquanto o <span class="udp">UDP</span> atingiu
+                <span class="udp">94.43%</span> da banda nominal.
+            </p>
+            <p>
+                Já com o <span class="emphasis">MTU 9000</span>, o <span class="tcp">TCP</span> atingiu
+                em média <span class="tcp">97.28%</span> da banda nominal, enquanto o
+                <span class="udp">UDP</span> atingiu <span class="udp">99.86%</span> da banda nominal.
+            </p>
+            <p>
+                Portanto, o <span class="tcp">TCP</span> teve uma melhora de
+                <span class="emphasis">2.32%</span> ao aumentar o <span class="emphasis">MTU</span> nos
+                enlaces reais, enquanto o <span class="udp">UDP</span> teve uma melhora de
+                <span class="emphasis">5.43%</span> ao aumentar o <span class="emphasis">MTU</span> nos
+                enlaces reais.
+            </p>
+
+            <h3><b>Enlaces Virtuais</b></h3>
+            <p>
+                Nos <b>enlaces virtuais</b>, com <span class="emphasis">MTU 1500</span>, o
+                <span class="tcp">TCP</span> atingiu <span class="tcp">94.9%</span> da banda nominal,
+                enquanto o <span class="udp">UDP</span> atingiu <span class="udp">97.3%</span> da banda nominal.
+            </p>
+            <p>
+                Já com o <span class="emphasis">MTU 9000</span>, o <span class="tcp">TCP</span> atingiu
+                <span class="tcp">94.9%</span> da banda nominal, enquanto o <span class="udp">UDP</span>
+                atingiu <span class="udp">96.25%</span> da banda nominal.
+            </p>
+            <p>
+                Portanto, o <span class="tcp">TCP</span> teve uma melhora de <span class="emphasis">0%</span> ao
+                aumentar
+                o <span class="emphasis">MTU</span> nos enlaces virtuais, enquanto o <span class="udp">UDP</span> teve
+                uma melhora de <span class="emphasis">1.05%</span> ao aumentar o <span class="emphasis">MTU</span> nos
+                enlaces virtuais.
+            </p>
+        </div>
+    </section>
+
+    <section id="analise">
+        <h2>A Verdade!</h2>
+        De acordo com os dados obtidos, podemos notar que os resultados, tanto do TCP quanto do UDP, melhoraram ao
+        aumentar o MTU nos enlaces reais,
+        enquanto nos enlaces virtuais essa melhora foi quase nula.
+        <br />
+        Também é possível notar que nos enlaces reais com MTU de 1500, o TCP apresentou desempenho levemente superior ao
+        UDP. Esse resultado gerou questionamentos importantes:
+        <br />
+        <br />
+        <b>Por que o TCP performou tão bem quanto o UDP nos enlaces reais?</b>
+        <b>Por que o TCP teve uma melhora significativa ao aumentar o MTU nos enlaces reais?</b>
+
+        <h3><b>Suposição</b></h3>
+        Acreditamos que a melhora do TCP ao aumentar o MTU nos enlaces reais se deve ao fato de que os
+        roteadores modernos possuem otimizações em hardware para o TCP, o que pode resultar em um desempenho superior em
+        certas situações.
+        <br />
+        Já em relação à melhora do TCP em enlaces reais ao aumentar o MTU, acreditamos que isso se deve ao fato de que
+        ao aumentar o MTU, menos pacotes são fragmentados, o que resulta em menos sobrecarga e, junto com as otimizações
+        de hardware, resulta em um desempenho superior.
+
+        <h3><b>Base da Suposição</b></h3>
+        Ao pesquisar sobre o assunto, encontramos fontes que apoiam nossa suposição. Features como <b>Segment
+            Offloading</b>, <b>Caching e compressão de segmentos TCP</b>
+        e <b>Paralelização de transmissão de dados</b> podem ser encontradas em roteadores modernos, como os da
+        <b>Cisco</b>, <b>Huawei</b>, <b>Juniper</b> e <b>Extreme</b>.
+
+        Além disso, inumeras otimizações de software nos roteadores modernos, como <b>TCP Fast Open</b>, <b>Politicas de
+            aceleração</b>, <b>Janela TCP dinâmica</b>,
+        <b>TCP Forwarding em firewalls</b> e <b>Proportional Rate Recovery</b> também podem ser usadas em conjunto com
+        as otimizações de hardware para melhorar o desempenho do TCP. Essas otimizações podem explicar por que o TCP se
+        aproxima do UDP em termos de eficiência em redes modernas, especialmente em enlaces reais.
+
+        <h3><b>Conclusão</b></h3>
+        A pergunta inicial era: <b>em que situações o TCP pode superar o UDP em termos de desempenho?</b> A resposta é:
+        conforme a largura de banda aumenta e
+        a rede é capaz de transmitir pacotes maiores, as otimizações de hardware e software presentes nos roteadores
+        modernos podem fazer com que o TCP seja, em alguns casos,
+        tão eficiente quanto o UDP, do ponto de vista de consumo de banda. É importante ressaltar que o UDP ainda é mais
+        rápido que o TCP e que a nossa análise não leva em consideração eficiência de CPU, memória ou energia.
+
+        Uma possível solução para esse problema é o protocolo <b>QUIC</b> que é um protocolo de transporte seguro e
+        rápido que utiliza o UDP como transporte, porém com novos desafios de segurança.
+
+        <h3><b>Dificuldades e possíveis pontos de erro</b></h3>
+
+        Durante a realização dos testes, encontramos algumas dificuldades que podem ter influenciado nos resultados
+        obtidos:
+
+        <ul>
+            <li>Em enlaces reais, verificamos uma perda de pacotes variável à medida que aumentávamos a largura de
+                banda. Essa perda provavelmente influenciou negativamente o UDP, que não possui controle de
+                congestionamento nativo.</li>
+            <li>Ajustar parâmetros como tamanho das janelas do TCP, MTU e fluxos pararelos para
+                refletir redes reais foi um desafio significativo.</li>
+        </ul>
+
+        <h3><b>Referências</b></h3>
+
+        Abaixo estão as referências academicas e páginas de fabricantes de roteadores com exemplos de otimizações de
+        hardware e software para o TCP:
+        <ul>
+            <div class="links">
+                <li><a href="https://support.huawei.com/enterprise/en/doc/EDOC1100112358/4e817ae3/configuring-tcp-optimization"
+                        target="_blank">Huawei - Configuring TCP Optimization</a></li>
+                <li><a href="https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/tcp-optimization/vedge-20-x/tcp-optimization-book-vedge/tcp-optimization-vedge-devices.html"
+                        target="_blank">Cisco - TCP Optimization</a></li>
+                <li><a href="https://ieeexplore.ieee.org/abstract/document/842138" target="_blank">Optimizing TCP
+                        forwarder
+                        performance</a></li>
+                <li><a href="https://ieeexplore.ieee.org/document/5215913" target="_blank">Performance optimization of
+                        TCP/IP over 10 Gigabit Ethernet by precise instrumentation</a></li>
+                <li><a href="https://ant.isi.edu/events/dinr2023/P/p32.pdf" target="_blank">A Data Driven Approach to
+                        TCP
+                        Tuning</a></li>
+            </div>
+        </ul>
+        </p>
+    </section>
+</body>
+
+</html>

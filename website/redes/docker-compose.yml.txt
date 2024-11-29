@@ -1,0 +1,42 @@
+services:
+  base: &base
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    image: tcpxudp
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./volumes/iperf:/volumes/iperf
+
+  iperf-server:
+    <<: *base
+    entrypoint: iperf3 -s
+
+  # 200mbps:
+  #   <<: *base
+  #   environment:
+  #     - NETWORK_SPEED=200
+  #   depends_on:
+  #     - iperf-server        
+
+  500mbps:
+    <<: *base
+    environment:
+      - NETWORK_SPEED=500
+    depends_on:
+      - iperf-server
+
+  # 700mbps:
+  #   <<: *base
+  #   environment:
+  #     - NETWORK_SPEED=700
+  #   depends_on:
+  #     - iperf-server
+
+  1gbps:
+    <<: *base
+    environment:
+      - NETWORK_SPEED=1000
+    depends_on:
+      - iperf-server

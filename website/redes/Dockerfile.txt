@@ -1,0 +1,27 @@
+# Imagem base
+FROM debian:12
+
+# Instalação de pacotes necessários
+RUN apt update && apt install -y \
+    build-essential \
+    cmake \
+    git \
+    libboost-all-dev \
+    libssl-dev \
+    libuv1-dev \
+    pkg-config \
+    iputils-ping \
+    iproute2 \
+    && rm -rf /var/lib/apt/lists/*
+    
+# Instalação do iperf3
+RUN apt update && yes | apt install -y iperf3
+
+# Copia o script de configuração do tráfego
+COPY entrypoint.sh /opt/entrypoint.sh
+
+# Define o diretório de trabalho
+WORKDIR /opt
+
+# Define o comando padrão
+ENTRYPOINT [ "sh", "-c", "/opt/entrypoint.sh" ]
